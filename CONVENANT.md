@@ -2,6 +2,7 @@ AGREED MEETING TIME/PLACE FOR REGULAR WEEKLY TEAM MEETINGS/WORK:
 
 Tuesdays: 7-10pm
 Thursdays: 7-10pm
+Boles 004
 
 Times will be modified based upon conflicts that may arise.
 Individual work, once decided upon as a team, will be finished remotely
