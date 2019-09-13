@@ -1,3 +1,49 @@
+TEAM COVENANT
+
+INSTRUCTIONS:
+
+Please meet in person as a team.  It is especially important that each
+member be present for the initial meeting.  Discuss a strategy for
+working on the project.  In the first phase, you will design the
+database together.  The second phase is implementation (SQL, PHP, and
+HTML).  You will likely need to adjust your strategy as you move from
+the first phase to the second.  You may also need to modify this
+covenant due to unforeseen changes in team members' schedules.
+
+One of you should create a project for your team on our GitLab
+(code.centre.edu).  Call it csc362-labs-[YOUR-TEAM-NAME].  This
+project should be DIFFERENT from your labs.  (See instructions for
+Lab02.)  As usual, add me as a "Master".  This time also add all other
+members of the team.  You can edit this covenant on one computer and
+then commit it to git, or each of you can modify it.
+
+Decide on a regular meeting time and place--at least one regular
+meeting per week.  Come to a consensus on when and where.  Be
+realistic.  If you cannot be present, or if a location would not work
+well for you, discuss this openly as a team.  Also consider the
+schedule for the term project and how it relates to your other
+commitments (classes, sports, clubs, religious activities, etc.)  If
+there will be points during the semester when it will be difficult or
+impossible for you to contribute to the project, you should discuss
+this as a team.  For example, you may want to decide now that you will
+need to submit a particular deliverable early.
+
+If you make changes to this covenant, all team members should come to
+agreement.  Then commit the revised covenant via git. 
+
+
+
+TEAM NAME: Guns N' Roses 
+
+
+
+TEAM MEMBERS AND CONTACT INFO:
+
+   MEMBER              MOBILE PHONE           PREFERRED EMAIL
+1. Mark Hisle          859-808-1755           mark.hisle@centre.edu
+2. Tori Daniel         859-699-8341           tori.daniel@centre.edu
+3. Tianrui Chen        859-420-2676           tianrui.chen@centre.edu
+
 AGREED MEETING TIME/PLACE FOR REGULAR WEEKLY TEAM MEETINGS/WORK:
 
 Tuesdays: 7-10pm
