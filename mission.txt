@@ -1,0 +1,36 @@
+Subjects
+--------
+students
+tests
+professors
+proctors
+
+
+
+Fields
+--------
+test start time
+test length
+test date
+first name
+last name
+email address
+password
+computer availability
+proctor availability
+seat availability
+mobile phone
+home phone
+office phone 
+course taught
+professor ID
+student ID
+extended time
+status of test 
+test version
+computer required
+test file
+
+
+
+
