@@ -1,19 +1,23 @@
 
 Mission Statement
 
-	The purpose of the Acme Test Proctoring Services' database is to facilitate the informational needs of proctors, professors and students at our proctoring center.
+	The purpose of the Acme Test Proctoring Services' database is to facilitate the informational needs of proctors, instructors and students at our proctoring center.
 
 Mission Objective(s)
 	
--maintain student records
--mainting proctor records
--mainting professor records
--log times for tests
--mainting scheduling system
--track room capacity
--track seat availability
--track computer availability
--create system for emailing 
+-maintain student identification information
+
+-maintain proctor identification information and contact information
+
+-maintain instructor identification information and contact information
+
+-keep testing schedule
+
+-keep track of room capacity and seating/equipment availability
+
+-hold test information and files
+
+ 
 
 
 
