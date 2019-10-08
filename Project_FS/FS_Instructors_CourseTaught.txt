@@ -1,0 +1,117 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Course Taught 
+
+Specification Type:
+  Unique:   X
+  Generic:  
+  Replica:  
+Parent Table:         Instructors
+Label:                course_taught 
+Source Specification:  
+Shared By:             
+Aliases:               
+Description:          Name of course of which the test is a part 
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Alphanumeric 
+Length:               25 
+Decimal Places:        
+Input Mask:            
+Display Format:        
+Character Support:    X
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):   
+  Special (©®™Σπ):     
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:     
+               Foreign:     
+               Alternate:   
+
+Key Structure: Simple:      
+               Composite:   
+
+Uniqueness:    Non-unique: X 
+               Unique:      
+
+Null Support:  Nulls OK:    
+               No nulls:   X 
+
+Values Entered By: User:   X 
+                   System:  
+
+Required Value:    No:      
+                   Yes:    X 
+
+Default Value:      
+
+Range of Values: 
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:    
+  Enter later, edits allowed:      
+  Enter later, edits not allowed:  
+  Not determined at this time:     
+
+Comparisons Allowed: 
+  Same Field:    
+                ALL   
+                =     
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+  Other Fields: 
+                ALL   
+                =     
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+  Value Expr.:   
+                ALL   
+                =    
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+Operations Allowed:
+  Same Field:    
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+  Other Fields:  
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+  Value Expr.:   
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+NOTES:
+

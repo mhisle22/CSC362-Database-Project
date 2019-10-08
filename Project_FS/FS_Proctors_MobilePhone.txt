@@ -1,0 +1,117 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Proctor Mobile Phone 
+
+Specification Type:
+  Unique:   
+  Generic:  
+  Replica:  X
+Parent Table:         Proctors
+Label:                proctor_mobile_phone
+Source Specification: Phone Number
+Shared By:             
+Aliases:               
+Description:           Main phone number used to contact proctor employees
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Alphanumeric 
+Length:               12 
+Decimal Places:        
+Input Mask:            
+Display Format:        
+Character Support:    X
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:     
+               Foreign:     
+               Alternate:   
+
+Key Structure: Simple:      
+               Composite:   
+
+Uniqueness:    Non-unique: X 
+               Unique:      
+
+Null Support:  Nulls OK:    X
+               No nulls:    
+
+Values Entered By: User:   X 
+                   System:  
+
+Required Value:    No:    X
+                   Yes:     
+
+Default Value:      
+
+Range of Values:    
+
+Edit Rule:
+  Enter now, edits allowed: X       
+  Enter now, edits not allowed:    
+  Enter later, edits allowed:      
+  Enter later, edits not allowed:  
+  Not determined at this time:     
+
+Comparisons Allowed: 
+  Same Field:    
+                ALL   
+                =     
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+  Other Fields: 
+                ALL   
+                =     
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+  Value Expr.:   
+                ALL   
+                =    
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+Operations Allowed:
+  Same Field:    
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+  Other Fields:  
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+  Value Expr.:   
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+NOTES:
+
