@@ -9,9 +9,9 @@ proctors
 
 Fields
 --------
-test start time
-test length
-test date	CPK
+test_start_time
+test_length
+test_date	CPK
 student_first_name	
 instructor_first_name	
 proctor_first_name	
@@ -24,7 +24,7 @@ proctor_email_address
 password
 working_computers
 proctor_shift
-seat_availability
+seats_needed
 mobile_phone
 home_phone
 office_phone 
