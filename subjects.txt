@@ -24,7 +24,6 @@ proctor_email_address
 password
 working_computers
 proctor_shift
-seats_needed
 mobile_phone
 home_phone
 office_phone 
