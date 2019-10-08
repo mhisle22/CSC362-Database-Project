@@ -9,25 +9,30 @@ proctors
 
 Fields
 --------
-test start time
-test length
-test date	CPK
-first name	
-last name	CPK
-email address
+test_start_time
+test_length
+test_date	CPK
+student_first_name	
+instructor_first_name	
+proctor_first_name	
+student_last_name	CPK
+instructor_last_name
+proctor_last_name
+student_email_address
+instructor_email_address
+proctor_email_address
 password
-working computers
-proctor shift
-seat availability
-mobile phone
-home phone
-office phone 
-course taught
-instructor ID	PK
-student ID	PK
-proctor ID	PK
-extended time
-status of test 
-test version
-computer required
-test file blob
+working_computers
+proctor_shift
+mobile_phone
+home_phone
+office_phone 
+course_taught
+instructorID	PK
+studentID	PK
+proctorID	PK
+extended_time
+status_of_test 
+test_version
+computer_required
+test_file_blob
