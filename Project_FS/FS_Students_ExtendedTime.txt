@@ -1,0 +1,117 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Extended Time 
+
+Specification Type:
+  Unique:  X 
+  Generic:  
+  Replica: _ 
+Parent Table:         _ 
+Label:                 extended_Time
+Source Specification: _ 
+Shared By:            _ 
+Aliases:              _ 
+Description:          Denotes whether or not the student has extended time for the test. 
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            NUMERIC
+Length:               _ 
+Decimal Places:       _ 
+Input Mask:           XX:XX 
+Display Format:       XX hours XX minutes 
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _ 
+
+Null Support:  Nulls OK:   X 
+               No nulls:   _ 
+
+Values Entered By: User:   X 
+                   System: _ 
+
+Required Value:    No:     X 
+                   Yes:    _ 
+
+Default Value:     NULL 
+
+Range of Values:   _ 
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     X 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+Comparisons Allowed:
+  Same Field:   _ 
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Other Fields: _
+                ALL  X 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Value Expr.:  _ 
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+Operations Allowed:
+  Same Field:   _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Other Fields: _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Value Expr.:  _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+NOTES:
+
