@@ -4,13 +4,13 @@ RULE INFORMATION
 
 Statement:  When a record is deleted from Tests, the records in Students_Tests table that have the same Test_Date  
 
-Constraint: _ 
+Constraint: On delete, Cascade 
 
-Type:     Database Oriented:     _ 
+Type:     Database Oriented:     X 
           Application Oriented   _ 
 
 Category: Field Specific:        _ 
-          Relationship Specific: _ 
+          Relationship Specific: X 
 
 Test On:  Insert:                _ 
           Delete:                _ 
@@ -21,7 +21,7 @@ STRUCTURES AFFECTED
 
 Field Names: _ 
 
-Table Names: _
+Table Names: Tests, Students_Tests
 
 
 FIELD ELEMENTS AFFECTED
@@ -47,7 +47,7 @@ Logical Elements:  Key Type:            _
 
 ACTION TAKEN
 
-_ 
+Edit Rule Modified 
 
 
 NOTES: _
