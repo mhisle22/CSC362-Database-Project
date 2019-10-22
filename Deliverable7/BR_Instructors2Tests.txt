@@ -1,0 +1,55 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement: Whenever an instructor is deleted, all tests related to them are also deleted as they will no longer be able to hold tests.
+
+Constraint: Deletion rule was added to Instructor table relation to Tests table, Cascade, so that all tests associated with an
+	    instructor will be deleted once an instructor is deleted.  
+
+Type:     Database Oriented:     X 
+          Application Oriented    
+
+Category: Field Specific:         
+          Relationship Specific: X 
+
+Test On:  Insert:                 
+          Delete:                X 
+          Update:                
+
+
+STRUCTURES AFFECTED
+
+Field Names:  
+
+Table Names: Instructors, Tests
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:            
+                   Length:               
+                   Decimal Places:       
+                   Character Support:    
+                   Input Mask:           
+                   Display Format:       
+
+Logical Elements:  Key Type:             
+                   Key Structure:        
+                   Uniqueness:           
+                   Null Support:         
+                   Values Entered By:    
+                   Default Value:        
+                   Range of Values:      
+                   Comparisons Allowed:  
+                   Operations Allowed:   
+                   Edit Rule:            
+
+
+ACTION TAKEN
+
+Cascade deletion rule added to Instructor-tests relation
+
+
+NOTES: 
+
