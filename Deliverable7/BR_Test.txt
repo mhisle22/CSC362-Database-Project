@@ -13,7 +13,7 @@ Category: Field Specific:        _
           Relationship Specific: X 
 
 Test On:  Insert:                _ 
-          Delete:                _ 
+          Delete:                X 
           Update:                _
 
 
