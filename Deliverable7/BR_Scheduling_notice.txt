@@ -39,7 +39,7 @@ Logical Elements:  Key Type:            _
                    Null Support:        _ 
                    Values Entered By:   _ 
                    Default Value:       _ 
-                   Range of Values:     _ 
+                   Range of Values:     X 
                    Comparisons Allowed: _ 
                    Operations Allowed:  _ 
                    Edit Rule:           _ 
