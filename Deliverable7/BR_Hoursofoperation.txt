@@ -1,0 +1,54 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  The proctoring center has specific hours of operation- no work will take place outside of these hours
+
+Constraint:  General schedule is all weekdays 8am-4pm, closed during lunch 12-1, with exceptions of being open weekends during finals and closed during school breaks
+
+Type:     Database Oriented:      
+          Application Oriented   X 
+
+Category: Field Specific:        X 
+          Relationship Specific:  
+
+Test On:  Insert:                X 
+          Delete:                 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: Test_Date 
+
+Table Names: N/A
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:            
+                   Length:               
+                   Decimal Places:       
+                   Character Support:    
+                   Input Mask:           
+                   Display Format:       
+
+Logical Elements:  Key Type:             
+                   Key Structure:        
+                   Uniqueness:           
+                   Null Support:         
+                   Values Entered By:    
+                   Default Value:        
+                   Range of Values:     X 
+                   Comparisons Allowed:  
+                   Operations Allowed:   
+                   Edit Rule:            
+
+
+ACTION TAKEN
+
+Changes will take place in the PHP code. Or something related on the application layer. 
+
+
+NOTES: TODO for PHP/GUI step of this class
+

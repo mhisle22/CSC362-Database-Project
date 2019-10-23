@@ -1,0 +1,54 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  There is a limited number of seats available in the proctoring center (22, potential for larger in future), along with 8 computers for tests that require them.
+
+Constraint:  Tests cannot be scheduled if there is not a sufficient amount of empty seats or computers if necessary
+
+Type:     Database Oriented:      
+          Application Oriented   X 
+
+Category: Field Specific:        X 
+          Relationship Specific:  
+
+Test On:  Insert:                X 
+          Delete:                 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: N/A
+
+Table Names: N/A
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:            
+                   Length:               
+                   Decimal Places:       
+                   Character Support:    
+                   Input Mask:           
+                   Display Format:       
+
+Logical Elements:  Key Type:             
+                   Key Structure:        
+                   Uniqueness:           
+                   Null Support:         
+                   Values Entered By:    
+                   Default Value:       X
+                   Range of Values:     X 
+                   Comparisons Allowed:  
+                   Operations Allowed:   
+                   Edit Rule:           X 
+
+
+ACTION TAKEN
+
+Changes will take place in the PHP code. Or something related on the application layer. 
+
+
+NOTES: TODO for PHP/GUI step of this class
+
