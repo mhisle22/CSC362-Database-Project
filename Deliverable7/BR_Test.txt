@@ -2,12 +2,14 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement:  When a record is deleted from Tests, the records in Students_Tests table that have the same Test_Date  
+Statement:  When a record is deleted from Tests, if the test is scheduled in the future,
+		the records in Students_Tests table that have the same Test_Date will also be deleted, therefore cascade.   
+	If the test is scheduled in the past, then they can only be deleted after 4 years past the test date, therefore Deny.
 
-Constraint: On delete, Cascade 
+Constraint: On delete, Restrict 
 
 Type:     Database Oriented:     X 
-          Application Oriented   _ 
+          Application Oriented   X 
 
 Category: Field Specific:        _ 
           Relationship Specific: X 
@@ -42,13 +44,14 @@ Logical Elements:  Key Type:            _
                    Range of Values:     _ 
                    Comparisons Allowed: _ 
                    Operations Allowed:  _ 
-                   Edit Rule:           _ 
+                   Edit Rule:           X 
 
 
 ACTION TAKEN
 
-Edit Rule Modified 
+Edit Rule Modified
 
 
-NOTES: _
+NOTES: We will need to implement this in both database and application. The official deletion rule is restrict, but
+based on parameters this will actually be either a cascade or deny for the deletion rule. 
 
