@@ -1,0 +1,37 @@
+VIEW SPECIFICATIONS
+
+GENERAL INFORMATION
+
+Name:  Proctor Work Schedule
+
+Desciption: A display of tests that can be available to be proctored or
+	    are taken by other proctors.
+
+Type: Data:       X 
+      Aggregate:  
+      Validation:  
+
+
+BASE TABLES
+
+Proctors, Tests
+
+
+CALCULATED FIELD EXPRESSIONS
+
+Field Name              Expression
+_                       _ 
+_                       _ 
+_                       _ 
+
+
+FILTERS
+
+Field Name              Condition
+_                       _ 
+_                       _ 
+_                       _ 
+
+
+NOTES: Will be implemented more on the Application level than SQL
+

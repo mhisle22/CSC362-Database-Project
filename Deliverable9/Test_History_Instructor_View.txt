@@ -1,0 +1,36 @@
+VIEW SPECIFICATIONS
+
+GENERAL INFORMATION
+
+Name:  Test Instructor History
+
+Desciption: A display of past tests given by a certain instructor
+
+Type: Data:       X 
+      Aggregate:  
+      Validation:  
+
+
+BASE TABLES
+
+Instructors, Tests
+
+
+CALCULATED FIELD EXPRESSIONS
+
+Field Name              Expression
+_                       _ 
+_                       _ 
+_                       _ 
+
+
+FILTERS
+
+Field Name              Condition
+Test_Instructor         ="%Instructor's name" 
+_                       _ 
+_                       _ 
+
+
+NOTES: Will be implemented more on the Application level than SQL
+
