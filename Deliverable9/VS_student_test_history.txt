@@ -1,0 +1,36 @@
+VIEW SPECIFICATIONS
+
+GENERAL INFORMATION
+
+Name: Student_Test_history 
+
+Desciption: This view provides the past test information of the students taken. We use this information to display the past history page.  
+
+Type: Data:       X 
+      Aggregate:  _
+      Validation: _ 
+
+
+BASE TABLES
+
+Students, Students_Tests, Tests
+
+
+CALCULATED FIELD EXPRESSIONS
+
+Field Name              Expression
+Student Name            Students_First_Name & " " & Students_Last_Name
+_                       _ 
+_                       _ 
+
+
+FILTERS
+
+Field Name              Condition
+_                       _ 
+_                       _ 
+_                       _ 
+
+
+NOTES: _ 
+

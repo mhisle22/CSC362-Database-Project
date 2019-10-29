@@ -1,0 +1,36 @@
+VIEW SPECIFICATIONS
+
+GENERAL INFORMATION
+
+Name: Instrcutor Class Schedule 
+
+Desciption: This view provides class schedule for instructor with instructor name and test information. We use this information to help instructors to review the test scheduled and schedule the new tests.
+
+Type: Data:       X 
+      Aggregate:  _
+      Validation: _ 
+
+
+BASE TABLES
+
+Instructors, Tests
+
+
+CALCULATED FIELD EXPRESSIONS
+
+Field Name              Expression
+Instructor Name         Instructors_First_Name & " " & Instructors_Last_Name 
+_                       _ 
+_                       _ 
+
+
+FILTERS
+
+Field Name              Condition
+_                       _ 
+_                       _ 
+_                       _ 
+
+
+NOTES: _ 
+

@@ -1,0 +1,36 @@
+VIEW SPECIFICATIONS
+
+GENERAL INFORMATION
+
+Name: Student Test Schedule 
+
+Desciption: This view provides the test schedule for students with their name, test date, and other test information. We use this information to display the student test schedule page.
+
+Type: Data:       X 
+      Aggregate:  _
+      Validation: _ 
+
+
+BASE TABLES
+
+Students, Students_Tests
+
+
+CALCULATED FIELD EXPRESSIONS
+
+Field Name              Expression
+Student Name            Students_First_Name & " " & Students_Last_Name
+_                       _ 
+_                       _ 
+
+
+FILTERS
+
+Field Name              Condition
+_                       _ 
+_                       _ 
+_                       _ 
+
+
+NOTES: _ 
+
