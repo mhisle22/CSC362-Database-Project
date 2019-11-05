@@ -18,8 +18,8 @@ Description:          Specifies whether a computer is needed for this test.
 
 PHYSICAL ELEMENTS
 
-Data Type:            ALPHANUMERIC 
-Length:               3 
+Data Type:            BOOLEAN
+Length:               5 
 Decimal Places:       _ 
 Input Mask:           _ 
 Display Format:       _ 
@@ -52,9 +52,9 @@ Values Entered By: User:   X
 Required Value:    No:     _ 
                    Yes:    X 
 
-Default Value:     NO 
+Default Value:     FALSE
 
-Range of Values:   YES, NO
+Range of Values:   TRUE, FALSE
 
 Edit Rule:
   Enter now, edits allowed:       X 
