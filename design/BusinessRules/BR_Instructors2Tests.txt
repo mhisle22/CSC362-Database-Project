@@ -2,15 +2,15 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement: Whenever an instructor is deleted, all tests related to them are also deleted as they will no longer be able to hold tests.
+Statement: Whenever an instructor is deleted, they are instead set as inactive and remain in the database for ecord purposes.
 
-Constraint: Deletion rule was added to Instructor table relation to Tests table, Cascade, so that all tests associated with an
-	    instructor will be deleted once an instructor is deleted.  
+Constraint: Deletion rule was added to Instructor table relation to Tests table, Restrict, so that they are not truly removed from
+	    DB. Instead, a field named IstructorIsActive is changed.  
 
 Type:     Database Oriented:     X 
           Application Oriented    
 
-Category: Field Specific:         
+Category: Field Specific:        X 
           Relationship Specific: X 
 
 Test On:  Insert:                 
@@ -20,7 +20,7 @@ Test On:  Insert:
 
 STRUCTURES AFFECTED
 
-Field Names:  
+Field Names: InstructorIsActive
 
 Table Names: Instructors, Tests
 
@@ -48,7 +48,8 @@ Logical Elements:  Key Type:
 
 ACTION TAKEN
 
-Cascade deletion rule added to Instructor-tests relation
+Restrict deletion rule added to Instructor-tests relation.
+On instructor delete, the field for InstructorIsActive is set to False.
 
 
 NOTES: 

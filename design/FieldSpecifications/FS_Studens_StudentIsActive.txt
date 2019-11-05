@@ -1,0 +1,117 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Student Is Active
+
+Specification Type:
+  Unique:   X
+  Generic:  
+  Replica:  
+Parent Table:         Students
+Label:                student_is_active 
+Source Specification:  
+Shared By:             
+Aliases:               
+Description:          Boolean indicating whether a student has been deleted and is no lnonger active
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Boolean 
+Length:               
+Decimal Places:        
+Input Mask:            
+Display Format:        
+Character Support:    
+  Letters (A-Z):      
+  Numbers (0-9):      
+  Keyboard (.,/$#%):   
+  Special (©®™Σπ):     
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:     
+               Foreign:     
+               Alternate:   
+
+Key Structure: Simple:      
+               Composite:   
+
+Uniqueness:    Non-unique: X 
+               Unique:      
+
+Null Support:  Nulls OK:    
+               No nulls:   X 
+
+Values Entered By: User:    
+                   System: X
+
+Required Value:    No:      
+                   Yes:    X 
+
+Default Value:      True
+
+Range of Values: 
+
+Edit Rule:
+  Enter now, edits allowed:       
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:      
+  Enter later, edits not allowed:  
+  Not determined at this time:     
+
+Comparisons Allowed: 
+  Same Field:    
+                ALL   
+                =     
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+  Other Fields: 
+                ALL   
+                =     
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+  Value Expr.:   
+                ALL   
+                =    
+                >     
+                >=    
+                !=    
+                <     
+                <=    
+
+Operations Allowed:
+  Same Field:    
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+  Other Fields:  
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+  Value Expr.:   
+                ALL   
+                +     
+                -     
+                *     
+                /     
+
+NOTES: Modified by database/application, not user, determines whether a student can be included in a test
+
