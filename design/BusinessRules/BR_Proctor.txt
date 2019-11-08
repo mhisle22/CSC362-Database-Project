@@ -2,7 +2,7 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement:  If a proctor is deleted, the tests assigned to that proctor must be reassigned/rescheduled.
+Statement:  If a proctor is deleted, the tests assigned to that proctor must be reassigned/rescheduled. Restrict Business Rule.
 
 Constraint: A Proctors_ID cannot be deleted if there are tests that reference that Proctors_ID 
 

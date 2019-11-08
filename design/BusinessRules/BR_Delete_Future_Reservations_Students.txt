@@ -2,7 +2,8 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement: Whenever a student is "deleted" (technically set as inactive), all tests associated with them are also deleted, as the students will no longer be able to take them.
+Statement: Whenever a student is "deleted" (technically set as inactive), all tests associated with them are also deleted, as the students will no longer be able to take them. This is only if the tests are for future dates.
+If there are records of tests taken in the past by the student, then they are not deleted so that the proctoring center can generate reports.
 
 Constraint: All tests associated with a student whenver they are set as inactive
 
@@ -21,7 +22,7 @@ STRUCTURES AFFECTED
 
 Field Names: StudentIsActive 
 
-Table Names: Students_Tests, Students
+Table Names: Reservations, Students
 
 
 FIELD ELEMENTS AFFECTED

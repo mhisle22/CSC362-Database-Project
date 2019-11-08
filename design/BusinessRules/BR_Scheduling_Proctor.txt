@@ -2,7 +2,7 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement:  There is no need for more than one proctor in the center in the same time.
+Statement:  There is no need for more than one proctor in the center at the same time.
 
 Constraint: _
 

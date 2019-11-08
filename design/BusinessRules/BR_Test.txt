@@ -3,7 +3,7 @@ BUSINESS RULE SPECIFICATIONS
 RULE INFORMATION
 
 Statement:  When a record is deleted from Tests, if the test is scheduled in the future,
-		the records in Students_Tests table that have the same Test_Date will also be deleted, therefore cascade.   
+		the records in Reservations table that have the same Test_ID will also be deleted, therefore cascade.   
 	If the test is scheduled in the past, then they can only be deleted after 4 years past the test date, therefore Deny.
 
 Constraint: On delete, Restrict 
@@ -23,7 +23,7 @@ STRUCTURES AFFECTED
 
 Field Names: _ 
 
-Table Names: Tests, Students_Tests
+Table Names: Tests, Reservations
 
 
 FIELD ELEMENTS AFFECTED

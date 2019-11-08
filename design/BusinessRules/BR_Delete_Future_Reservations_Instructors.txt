@@ -2,7 +2,8 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement: Whenever an instructor is "deleted" (technically set as inactive), all tests associated with them are also deleted, as the students will no longer be able to take them.
+Statement: Whenever an instructor is "deleted" (technically set as inactive), all tests that are associated with them are also deleted if the test is in the future, as the students will no longer be able to take them.
+If the test is in the past, then the tests aren't deleted until a certain amount of time has passed, due to the wishes of the proctoring center to keep a record in order to generate a yearly report.
 
 Constraint: All tests associated with an instructor whenever they are set as inactive
 

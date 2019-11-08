@@ -2,9 +2,10 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement: The test must be taken by a student. If a student is deleted, they are instead set as inactive and remain in the databse for record purposes.
+Statement: The test must be taken by a student. If a student is deleted, they are instead set as inactive and remain in the databse for record purposes. If the test is in the future and the student is deleted, then delete the 
+test reservation.
 
-Constraint: The participation of Students within the relationship is Mandatory. Also, A single record in Students_Tests can be only related to 1 records in Students_Tests. A restrict deletion rule for students.
+Constraint: The participation of Students within the relationship is Mandatory. A restrict deletion rule for students.
 
 Type:     Database Oriented:     X 
           Application Oriented   _ 
@@ -21,7 +22,7 @@ STRUCTURES AFFECTED
 
 Field Names: StudentIsActive
 
-Table Names: Students_Tests, Students
+Table Names: Reservations, Students
 
 
 FIELD ELEMENTS AFFECTED

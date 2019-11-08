@@ -2,7 +2,7 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement: Whenever an instructor is deleted, they are instead set as inactive and remain in the database for ecord purposes.
+Statement: Whenever an instructor is deleted, they are instead set as inactive and remain in the database for record purposes.
 
 Constraint: Deletion rule was added to Instructor table relation to Tests table, Restrict, so that they are not truly removed from
 	    DB. Instead, a field named IstructorIsActive is changed.  
