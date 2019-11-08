@@ -2,7 +2,7 @@ VIEW SPECIFICATIONS
 
 GENERAL INFORMATION
 
-Name: Instrcutor Class Schedule 
+Name: Instructor Class Schedule 
 
 Desciption: This view provides class schedule for instructor with instructor name and test information. We use this information to help instructors to review the test scheduled and schedule the new tests.
 
