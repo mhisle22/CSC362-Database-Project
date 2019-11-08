@@ -13,7 +13,7 @@ Type: Data:       X
 
 BASE TABLES
 
-Students, Students_Tests, Tests
+Students, Reservations, Tests
 
 
 CALCULATED FIELD EXPRESSIONS
