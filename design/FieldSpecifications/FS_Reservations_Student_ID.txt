@@ -2,27 +2,27 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Test_ID 
+Field Name:           Student_ID 
 
 Specification Type:
   Unique:  _ 
   Generic: _ 
   Replica: X 
-Parent Table:         _ 
-Label:                _ 
-Source Specification: Tests 
-Shared By:            _ 
+Parent Table:         Reservations
+Label:                StuID 
+Source Specification: StudentID from the Students table 
+Shared By:            _
 Aliases:              _ 
-Description:          The date when the test will be taken at the proctoring center. 
+Description:          A 6-digit number assigned to every student as a unique identifier.  
 
 
 PHYSICAL ELEMENTS
 
-Data Type:            DATE 
-Length:               8 
-Decimal Places:       0 
-Input Mask:           ##/##/#### 
-Display Format:       ##/##/#### 
+Data Type:            Numeric 
+Length:               6 
+Decimal Places:       _ 
+Input Mask:           ###### 
+Display Format:       000000 
 Character Support:
   Letters (A-Z):      _ 
   Numbers (0-9):      X 
@@ -38,9 +38,10 @@ Key Type:      Non:        _
                Alternate:  _ 
 
 Key Structure: Simple:     _ 
-               Composite:  X
+               Composite:  X 
+
 Uniqueness:    Non-unique: X 
-               Unique:      
+               Unique:     _ 
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X 
@@ -53,7 +54,7 @@ Required Value:    No:     _
 
 Default Value:     _ 
 
-Range of Values:   _ 
+Range of Values:   000001-999999 
 
 Edit Rule:
   Enter now, edits allowed:       X 
@@ -63,9 +64,9 @@ Edit Rule:
   Not determined at this time:    _ 
 
 Comparisons Allowed:
-  Same Field:   _ 
+  Same Field:   X 
                 ALL  _ 
-                =    _ 
+                =    X 
                 >    _ 
                 >=   _ 
                 !=   _ 
@@ -73,15 +74,6 @@ Comparisons Allowed:
                 <=   _ 
 
   Other Fields: _
-                ALL  X 
-                =    _ 
-                >    _ 
-                >=   _ 
-                !=   _ 
-                <    _ 
-                <=   _ 
-
-  Value Expr.:  _ 
                 ALL  _ 
                 =    _ 
                 >    _ 
@@ -89,6 +81,15 @@ Comparisons Allowed:
                 !=   _ 
                 <    _ 
                 <=   _ 
+
+  Value Expr.:  X 
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   X 
 
 Operations Allowed:
   Same Field:   _ 

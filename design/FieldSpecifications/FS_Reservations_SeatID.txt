@@ -2,27 +2,27 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Proctor_ID 
+Field Name:           SeatID 
 
 Specification Type:
   Unique:  _ 
   Generic: _ 
   Replica: X 
-Parent Table:         Tests 
-Label:                ProID 
-Source Specification: Proctor_ID from the Proctors table. 
+Parent Table:         Reservations
+Label:                seatid 
+Source Specification: SeatID from the Seats table.  
 Shared By:            _ 
 Aliases:              _ 
-Description:          A 6-digit number assigned to every student as a unique identifier.  
+Description:          A 2 digit number from 01-22 to every seat as a unique identifier. 
 
 
 PHYSICAL ELEMENTS
 
 Data Type:            Numeric 
-Length:               6 
+Length:               2 
 Decimal Places:       _ 
-Input Mask:           ###### 
-Display Format:       000000 
+Input Mask:           XX 
+Display Format:       01 
 Character Support:
   Letters (A-Z):      _ 
   Numbers (0-9):      X 
@@ -37,28 +37,28 @@ Key Type:      Non:        _
                Foreign:    X 
                Alternate:  _ 
 
-Key Structure: Simple:     X 
-               Composite:  _ 
+Key Structure: Simple:     _ 
+               Composite:  X 
 
-Uniqueness:    Non-unique: X 
-               Unique:     _ 
+Uniqueness:    Non-unique: _ 
+               Unique:     X 
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X 
 
-Values Entered By: User:   X 
-                   System: _ 
+Values Entered By: User:   _ 
+                   System: X 
 
 Required Value:    No:     _ 
                    Yes:    X 
 
 Default Value:     _ 
 
-Range of Values:   000001-999999 
+Range of Values:   01-22 
 
 Edit Rule:
-  Enter now, edits allowed:       X 
-  Enter now, edits not allowed:   _ 
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X 
   Enter later, edits allowed:     _ 
   Enter later, edits not allowed: _ 
   Not determined at this time:    _ 
@@ -114,4 +114,3 @@ Operations Allowed:
                 /    _ 
 
 NOTES:
-

@@ -2,71 +2,71 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Tests Start Time 
+Field Name:           TestID 
 
 Specification Type:
-  Unique:  X 
+  Unique:  _ 
   Generic: _ 
-  Replica: _ 
-Parent Table:         _ 
-Label:                Ts_Start_Time 
-Source Specification: _ 
+  Replica: X 
+Parent Table:         Reservations 
+Label:                res_testid
+Source Specification: TestID from Tests table. 
 Shared By:            _ 
 Aliases:              _ 
-Description:          Indicates the start time of the test. 
+Description:          A 6-digit number assigned to every tests as a unique identifier. 
 
 
 PHYSICAL ELEMENTS
 
-Data Type:            TIME 
-Length:               4 
+Data Type:            Numeric 
+Length:               6 
 Decimal Places:       _ 
-Input Mask:           XX:XX xx
-Display Format:       XX:XX am/pm
+Input Mask:           ###### 
+Display Format:       000000 
 Character Support:
-  Letters (A-Z):      X 
+  Letters (A-Z):      _ 
   Numbers (0-9):      X 
   Keyboard (.,/$#%):  _ 
-  Special (©®™Σπ):    _ 
+  Special (©®™Σπ):    _
 
 
 LOGICAL ELEMENTS
 
-Key Type:      Non:        X 
-               Primary:    _ 
-               Foreign:    _ 
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X 
                Alternate:  _ 
 
-Key Structure: Simple:     X 
-               Composite:  _ 
+Key Structure: Simple:     _ 
+               Composite:  X 
 
-Uniqueness:    Non-unique: X 
-               Unique:     _ 
+Uniqueness:    Non-unique: _ 
+               Unique:     X 
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X 
 
-Values Entered By: User:   X 
-                   System: _ 
+Values Entered By: User:   _ 
+                   System: X 
 
 Required Value:    No:     _ 
                    Yes:    X 
 
 Default Value:     _ 
 
-Range of Values:   _ 
+Range of Values:   000001-999999 
 
 Edit Rule:
-  Enter now, edits allowed:       X 
-  Enter now, edits not allowed:   _ 
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X 
   Enter later, edits allowed:     _ 
   Enter later, edits not allowed: _ 
   Not determined at this time:    _ 
 
 Comparisons Allowed:
-  Same Field:   _ 
+  Same Field:   X 
                 ALL  _ 
-                =    _ 
+                =    X 
                 >    _ 
                 >=   _ 
                 !=   _ 
@@ -74,7 +74,7 @@ Comparisons Allowed:
                 <=   _ 
 
   Other Fields: _
-                ALL  X 
+                ALL  _ 
                 =    _ 
                 >    _ 
                 >=   _ 
@@ -82,9 +82,9 @@ Comparisons Allowed:
                 <    _ 
                 <=   _ 
 
-  Value Expr.:  _ 
+  Value Expr.:  X 
                 ALL  _ 
-                =    _ 
+                =    X 
                 >    _ 
                 >=   _ 
                 !=   _ 
@@ -114,4 +114,3 @@ Operations Allowed:
                 /    _ 
 
 NOTES:
-

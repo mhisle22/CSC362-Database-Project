@@ -2,29 +2,29 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Tests Start Time 
+Field Name:           TestTimeStamp 
 
 Specification Type:
-  Unique:  X 
+  Unique:  _ 
   Generic: _ 
-  Replica: _ 
+  Replica: X 
 Parent Table:         _ 
-Label:                Ts_Start_Time 
-Source Specification: _ 
+Label:                _ 
+Source Specification: Tests 
 Shared By:            _ 
 Aliases:              _ 
-Description:          Indicates the start time of the test. 
+Description:          The date when the test will be taken at the proctoring center. 
 
 
 PHYSICAL ELEMENTS
 
-Data Type:            TIME 
-Length:               4 
-Decimal Places:       _ 
-Input Mask:           XX:XX xx
-Display Format:       XX:XX am/pm
+Data Type:            Date 
+Length:               8 
+Decimal Places:       0 
+Input Mask:           ##/##/#### 
+Display Format:       ##/##/#### 
 Character Support:
-  Letters (A-Z):      X 
+  Letters (A-Z):      _ 
   Numbers (0-9):      X 
   Keyboard (.,/$#%):  _ 
   Special (©®™Σπ):    _ 
@@ -32,16 +32,15 @@ Character Support:
 
 LOGICAL ELEMENTS
 
-Key Type:      Non:        X 
+Key Type:      Non:        _ 
                Primary:    _ 
-               Foreign:    _ 
+               Foreign:    X 
                Alternate:  _ 
 
-Key Structure: Simple:     X 
-               Composite:  _ 
-
+Key Structure: Simple:     _ 
+               Composite:  X
 Uniqueness:    Non-unique: X 
-               Unique:     _ 
+               Unique:      
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X 
