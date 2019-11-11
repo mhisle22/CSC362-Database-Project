@@ -1,8 +1,10 @@
+DROP TABLE IF EXISTS reservations;
 DROP TABLE IF EXISTS seats;
 DROP TABLE IF EXISTS tests;
 DROP TABLE IF EXISTS instructors;
 DROP TABLE IF EXISTS proctors;
 DROP TABLE IF EXISTS students;
+
 
 
 
@@ -75,7 +77,24 @@ CREATE TABLE tests(
 
 CREATE TABLE seats(
        PRIMARY KEY(seat_id,room_id),
-       seat_id			SERIAL,--but is from 01-22. I don't know how to impletement this so I use serial instead. Maybe we just make the type numeric(2) and enter the seat data with seat id from 1-22
+       seat_id			SERIAL NOT NULL UNIQUE,--but is from 01-22. I don't know how to impletement this so I use serial instead. Maybe we just make the type numeric(2) and enter the seat data with seat id from 1-22
        room_id 			NUMERIC(3) NOT NULL,
        if_computer		BOOLEAN NOT NULL
+);
+
+CREATE TABLE reservations(
+       PRIMARY KEY(student_id, test_id, seat_id, test_time_stamp),
+       student_id		SERIAL NOT NULL
+				REFERENCES students (student_id)
+				ON DELETE RESTRICT,		
+       test_id			SERIAL NOT NULL
+				REFERENCES tests (test_id)
+				ON DELETE RESTRICT,
+       seat_id			SERIAL NOT NULL
+				REFERENCES seats (seat_id)
+				ON DELETE RESTRICT,
+       test_time_stamp		TIMESTAMP NOT NULL,
+       proctor_id               SERIAL NOT NULL
+				REFERENCES proctors (proctor_id)
+				ON DELETE RESTRICT
 );
