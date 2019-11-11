@@ -21,7 +21,7 @@ PHYSICAL ELEMENTS
 Data Type:            Numeric 
 Length:               3 
 Decimal Places:       _ 
-Input Mask:           XX 
+Input Mask:           XXX 
 Display Format:       101 
 Character Support:
   Letters (A-Z):      _ 
