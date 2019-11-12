@@ -17,11 +17,11 @@ DROP DATABASE IF EXISTS gunsnrosesproject;
 CREATE DATABASE gunsnrosesproject;
 
 
-DROP TABLE IF EXISTS reservations CASCADE;
-DROP TABLE IF EXISTS seats CASCADE;
-DROP TABLE IF EXISTS tests CASCADE;
-DROP TABLE IF EXISTS instructors CASCADE;
-DROP TABLE IF EXISTS proctors CASCADE;
+DROP TABLE IF EXISTS reservations;
+DROP TABLE IF EXISTS seats;
+DROP TABLE IF EXISTS tests;
+DROP TABLE IF EXISTS instructors;
+DROP TABLE IF EXISTS proctors;
 DROP TABLE IF EXISTS students CASCADE;
 
 
@@ -37,17 +37,17 @@ CREATE TABLE students(
        				CONSTRAINT valid_student_phone_number
 				CHECK (student_mobile_number SIMILAR TO '[0-9]{3}\-[0-9]{3}\-[0-9]{4}'),
        student_password		VARCHAR(25) NOT NULL, --maybe we need a bussiness rule here? Like to make it unique?
-       student_extra_time	BOOLEAN DEFAULT FALSE, -- I'm not sure what kind of data type we gonna use for this... In FS, we said it's NUMERIC but the input mask is XX:XX.
+       student_extra_time	TIME, -- I'm not sure what kind of data type we gonna use for this... In FS, we said it's NUMERIC but the input mask is XX:XX.
        student_is_active 	BOOLEAN NOT NULL DEFAULT TRUE
 );
 
---deletion rule for students
+/*--deletion rule for students
 CREATE RULE students_for_life AS
        ON DELETE TO students DO INSTEAD
        UPDATE students
        SET student_is_active = FALSE
        WHERE student_id = OLD.student_id;
-
+*/
 
 
 --representation of proctor users in the database
@@ -77,17 +77,10 @@ CREATE TABLE instructors(
        				CONSTRAINT valid_instructor_office_phone
 				CHECK (instructor_office_phone SIMILAR TO '[0-9]{3}\-[0-9]{3}\-[0-9]{4}'),
        instructor_password	VARCHAR(25) NOT	NULL,
-       instructor_office_number	VARCHAR(4)  NOT NULL,
+       instrcutor_course_taught VARCHAR(25) NOT NULL,
+       instrcutor_office_number	VARCHAR(4)  NOT NULL,
        instructor_is_active     BOOLEAN NOT NULL DEFAULT TRUE
 );
-
-
---deletion rule for students
-CREATE RULE instructor_for_life AS
-       ON DELETE TO instructors DO INSTEAD
-       UPDATE instructors
-       SET instructor_is_active = FALSE
-       WHERE instructor_id = OLD.instructor_id;
 
 
 --data for tests
@@ -100,8 +93,8 @@ CREATE TABLE tests(
        test_date		DATE NOT NULL,				
        test_length		INTERVAL NOT NULL,
        test_version		VARCHAR(20),--Length is not defined in the FS...
-       test_course		VARCHAR(30) NOT NULL,
-       test_file_blob		bytea NOT NULL,--bytea is a blob type
+
+       test_file_blob		VARCHAR(20) NOT NULL,-----the BLOB type doesn't exist. I'm confused with the FS for this field.
 
        test_start_time		TIME NOT NULL,
        test_status		VARCHAR(15) NOT NULL--incomplete's length is 10, but I put 15 here in case of the length of the other situation is more than 10.
@@ -112,9 +105,9 @@ CREATE TABLE tests(
 --used as a pseudo-validation table
 CREATE TABLE seats(
        PRIMARY KEY(seat_id,room_id),
-       seat_id			NUMERIC(2) NOT NULL UNIQUE,--but is from 01-22
+       seat_id			SERIAL NOT NULL UNIQUE,--but is from 01-22. I don't know how to impletement this so I use serial instead. Maybe we just make the type numeric(2) and enter the seat data with seat id from 1-22
        room_id 			NUMERIC(3) NOT NULL,
-       is_computer		BOOLEAN NOT NULL
+       if_computer		BOOLEAN NOT NULL
 );
 
 
