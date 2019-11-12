@@ -1,0 +1,63 @@
+PHP PLan for Guns 'n Roses Project
+
+--Login Screen--
+Provides a transition screen to verify DB user identity and direct them to their resepctive user data.
+
+Creation and testing: entire team, need Javascript and dry run of how we will do the rest
+
+--Proctor Main Page--
+Displays current work schedule for proctors and upcoming tests available to proctor
+
+Creation and testing: Terry
+Dependencies: none
+
+--Student Main Page--
+Transition page to student test schedule and student test history
+
+Creation and testing: Mark 
+Dependencies: none
+
+--Student Test Schedule--
+Display of all upcoming tests for a student
+
+Creation and testing: Mark
+Dependencies: Student Main Page
+
+--Student Test History--
+Display of previous tests for a student along with grades (if applicable)
+
+Creation and testing: Mark
+Dependencies: Student Main Page
+
+
+--Instructor Main Page--
+Transition page to upcoming tests page and Test Log Page
+
+Creation and testing: Mark
+Dependencies: none
+
+--Upcoming Test Page--
+Display of all tests currently scheduled so that an instructor may find
+
+Creation and testing: Tori
+Dependencies: Instructor main page
+
+--Test Log Page--
+All preivous tests given by an instructor for logging purposes
+
+Creation and testing: Tori
+Dependencies: Instructor Main page
+
+
+
+MISCELLANEOUS PAGES:
+
+All smaller transitions (adding new test, etc.) that can be done in the same screen as another will be handled as a part of said
+screen. Details on this will be worked out as we come upon them.
+
+NOTE:
+
+Our interactions with the database and the links between all of these pages will be fleshed out more in the future. This is
+more of a preliminary plan than a concrete idea of what we will do.
+
+
