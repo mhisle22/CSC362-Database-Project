@@ -23,7 +23,17 @@ DROP TABLE IF EXISTS tests CASCADE;
 DROP TABLE IF EXISTS instructors CASCADE;
 DROP TABLE IF EXISTS proctors CASCADE;
 DROP TABLE IF EXISTS students CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
+
+--users of the DB, used in login screen of DB
+CREATE TABLE users(
+	PRIMARY KEY(user_id),
+	user_id			SERIAL,
+	username 		VARCHAR(30) NOT NULL UNIQUE,
+	password		VARCHAR(255) NOT NULL,
+	role			VARCHAR(10) NOT NULL
+);
 
 
 --representation of student users in the database
