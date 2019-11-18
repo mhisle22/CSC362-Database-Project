@@ -22,7 +22,6 @@ $pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
 
-debug_message("here");
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
@@ -39,7 +38,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_username = trim($_POST["username"]);
-            debug_message("I am here"); 
 	    debug_message('$sql= ' . $sql);
             // Attempt to execute the prepared statement
             if($stmt->execute()){
