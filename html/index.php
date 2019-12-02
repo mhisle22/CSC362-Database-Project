@@ -92,13 +92,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
 			    // Redirect user to respective screen
 			    if($role === "proctor") {
-				    header("location: proctor.php");
+				    header("location: proctor.php?username=" . 					    $username);
 			    }
 			    elseif($role === "student") {
-				    header("location: student.php");
+				    header("location: student.php?username=" .  				    $username);
 			    }
 			    elseif($role === "instructor") {
-				    header("location: instructor.php");
+				    header("location: instructor.php?username=" 				    . $username);
 			    }
 			    else {
 			       debug_message("User has no role, look into this");

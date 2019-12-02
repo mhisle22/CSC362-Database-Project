@@ -14,6 +14,7 @@ DROP VIEW IF EXISTS students_view;
 DROP VIEW IF EXISTS proctors_view;
 DROP VIEW IF EXISTS instructors_view;
 DROP VIEW IF EXISTS students_tests;
+DROP VIEW IF EXISTS upcoming_instructors;
 
 
 
@@ -77,4 +78,14 @@ AS
 SELECT test_time_stamp, test_id, test_course
   FROM reservations
 	NATURAL JOIN tests;
+
+
+CREATE VIEW upcoming_instructors
+AS
+SELECT student_first_name || ' ' || student_last_name AS student_name, test_date, test_start_time, test_length, test_status
+FROM reservations
+NATURAL JOIN students
+NATURAL JOIN tests
+GROUP BY students.student_first_name, students.student_last_name, tests.test_date, tests.test_start_time, tests.test_length, tests.test_status;
+
 
