@@ -24,21 +24,21 @@ NATURAL JOIN tests
 WHERE tests.instructor_id = 1 
 GROUP BY students.student_first_name, students.student_last_name, tests.test_date, tests.test_start_time, tests.test_length, tests.test_status;
 _SQL_;
-
-
+ */
+ 
 	$sql ='SELECT * FROM upcoming_instructors';
 	
 	try
 	{
 		$stmt = $pdo->query($sql);
-		var_dump($stmt);
+	//	var_dump($stmt);
 	}
 	catch(\PDOException $e)
 	{
 		throw new \PDOException($e->getMessage(), (int)$e->getCode());
 	}
- */
-
+ 
+ 
 
  	 
 
@@ -47,7 +47,7 @@ _SQL_;
 
 	//headers and columns
 	$labels = ['Name', 'Date', 'Start Time', 'Test Length', 'Test Status'];
-	$cols = ['Name', 'test_date', 'test_start_time', 'test_length', 'test_status'];
+	$cols = ['student_name', 'test_date', 'test_start_time', 'test_length', 'test_status'];
 
 	echo "\n<table>\n";
 
@@ -60,26 +60,32 @@ _SQL_;
 	echo "</tr>\n";
 	
 	//add data to table
-/*	var_dump($stmt);
+//	var_dump($stmt);
 	foreach ($stmt as $row)
 	{
+	//	var_dump($row);
 		echo "<tr>\n";
+		
 		$id = $row[$cols[0]];
+		echo "<td>" . $id . "</td>\n";
+	//	var_dump($id);
 		foreach (array_slice($cols, 1) as $col)
 		{
 			$td = $row[$col];
 			echo '<td>' . $td . "</td>\n";
 		}
 		echo "</tr>\n";
-	}*/
+	};
 	echo "</table>\n\n";
-	echo "<button type='createTest' value='Create Test'> Create Test</button>";
 	echo "<br/>";
-	echo "<button type='testLog' value='Test Log'>Test Log</button>";
+	echo "<a href='create_test.php'>Create Test</a><br />";
+	echo "<br/>";
+	echo "<a href='instructors_test_log.php'>Test Log</a><br />";
 	echo "</form>\n";
  
 }
 //function handles isset[] and creates the html for inputing data
+/*
 function createTest($pdo)
 {
 	$html = <<<_HTML_
@@ -100,7 +106,9 @@ function createTest($pdo)
 _HTML_;
 echo $html;
 }
+ */
 //function hands isset[] and creates the html
+/*
 function testLog($pdo)
 {
 	//to create test log table, would reuse a lot of same code from populating upcoming tests table
@@ -117,7 +125,7 @@ _HTML_;
 	echo $html;
 
 }
-
+*/
 function main()
 {
 
@@ -140,8 +148,8 @@ function main()
 	$html .= '</html>';
 	echo $html;
 	display_upcoming($pdo);
-	createTest($pdo);
-	testLog($pdo);
+//	createTest($pdo);
+//	testLog($pdo);
 
 }
 main();

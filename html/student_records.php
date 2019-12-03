@@ -25,4 +25,84 @@ $html .= '</html>';
 echo $html;
 
 
+//retrieve session variables
+session_start();
+$username = $_SESSION["username"];
+$id = $_SESSION["id"];
+
+//retrieve name of student so the header looks nice
+//along with extra_time data while we're at it
+$sql = 'SELECT student_first_name, student_last_name, student_extra_time';
+$sql .= ' FROM students';
+$sql .= " WHERE student_id = '{$id}'";
+
+$output = NULL;
+try {
+	$output = $pdo->query($sql);
+	//debug_message('Query successful');
+} catch (\PDOException $e) {
+	debug_message('ERROR: Query failed:');
+	debug_message('PSQL Error Message: ' . $e);
+}
+
+$hasExtraTime = NULL;
+
+foreach($output as $row)
+{
+	echo '<h2>Previous Tests of ' . $row['student_first_name'] . ' ' .
+	$row['student_last_name'] . '</h2>';
+	$hasExtraTime = $row['student_extra_time'];
+}
+
+// Query to get the schedule data for the student
+$sql = 'SELECT test_time_stamp, instructor_last_name, test_course, test_length, test_id';
+$sql .= ' FROM reservations';
+$sql .= ' NATURAL JOIN tests';
+$sql .= ' NATURAL JOIN instructors';
+$sql .= " WHERE student_id = '{$id}';";
+
+//debug_message('$sql = ' . $sql);
+
+//send the query
+$output = NULL;
+try {
+	$output = $pdo->query($sql);
+	//debug_message('Query successful');
+} catch (\PDOException $e) {
+	debug_message('ERROR: Query failed:');
+	debug_message('PSQL Error Message: ' . $e);
+}
+
+
+echo "<table style='border: 1px solid black;'>\n";
+echo "<tr><th>Test Date</th><th>Test Time</th><th>Instructor</th><th>Course</th><th>Length</th></tr>";
+
+foreach($output as $row)
+{
+	if(strtotime($row['test_time_stamp']) < strtotime('now'))
+	{
+	// a few of these variables need some formating first
+	$timestamp = explode(" ", $row['test_time_stamp']);
+	//modify length if extra time is needed
+	if($hasExtraTime) {	
+		$lengthStamp = strtotime($row['test_length']) + 60*60*2; //add two hours
+		$length = date('h:i:s', $lengthStamp);
+	}
+	else {	
+		$lengthStamp = strtotime($row['test_length']); 
+		$length = date('h:i:s', $lengthStamp);
+	}
+
+	echo "<tr>";
+	echo '<td>' . $timestamp[0]  . '</td>';
+	echo '<td>' . $timestamp[1] . '</td>';
+	echo '<td>' . 'Dr. '  . $row['instructor_last_name']  . '</td>';
+	echo '<td>' . $row['test_course'] . '</td>';
+	echo '<td>' . $length . '</td>';
+
+	echo '</tr>';
+	}
+}
+
+
 ?>

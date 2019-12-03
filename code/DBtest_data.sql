@@ -9,52 +9,51 @@
 
 
 INSERT INTO students (student_first_name, student_last_name, student_email, 
-		     student_mobile_number, student_password,
+		     student_mobile_number,
 		     student_extra_time, student_is_active)
 VALUES	('Cathy', 'Yan', 'cathy.yan@centre.edu', '445-987-0500', 
-	'iLoveKittens', FALSE, TRUE),
+	FALSE, TRUE),
 	('Mark', 'Hisle', 'mark.hisle@centre.edu', '859-456-6625', 
-	'WhatIsThis332', TRUE, TRUE),
+	TRUE, TRUE),
         ('Tori', 'Daniel', 'tori.daniel@gmail.com', '567-893-1427', 
-	'crossCountrySucks', FALSE, TRUE),
+	FALSE, TRUE),
 	('Terry', 'Chen', 'terry.chen@centre.edu', '758-182-0000', 
-	'no1WillGuess', FALSE, TRUE),
+	FALSE, TRUE),
 	('Tianrui', 'Chen', 'tianrui.chen@centre.edu', '388-563-7477', 
-	'incognito', FALSE, FALSE),
+	FALSE, FALSE),
 	('Allie', 'Riley', 'allie.riley@centre.edu', '606-744-1122', 
-	'22cantSwim', TRUE, TRUE),
+	TRUE, TRUE),
         ('Philip', 'Parker', 'philip.parker@centre.edu', '555-719-9966', 
-	'couldHaveBeenD1', FALSE, TRUE),
+	FALSE, TRUE),
 	('Madi', 'Bates', 'madi.bates@centre.edu', '859-808-1665', 
-	'physics123', FALSE, TRUE),
+	FALSE, TRUE),
 	('Justin', 'Germann', 'justin.germann@centre.edu', '859-808-4444', 
-	'iSuckAtSmashUltimate', FALSE, TRUE);
+	FALSE, TRUE);
 
 INSERT INTO proctors (proctor_first_name, proctor_last_name, proctor_email,
-		     proctor_home_phone, proctor_password, proctor_shift,
+		     proctor_home_phone, proctor_shift,
 	             proctor_is_active)
 VALUES	('Casey', 'Thompson', 'casey.boi@yahoo.com', '771-445-1983',
-	'floridaIsHome67', '-M-W-F-', TRUE),
-	('Kaj', 'Deon Ouden', 'kaj.den_ouden@aol.com', '655-737-1194',
-	'55dutchdown_', '-MTWRF-', TRUE),
+	'-M-W-F-', TRUE),
+	('Kaj', 'Den Ouden', 'kaj.den_ouden@aol.com', '655-737-1194',
+	'-MTWRF-', TRUE),
 	('Alexander', 'Leff', 'mrloaf@bellsouth.net', '885-725-2348',
-	'IHeartTheCapitals2', '-M-W-FS', FALSE),
+	'-M-W-FS', FALSE),
 	('Ailiyah', 'Alim', 'a.a@yahoo.com', '772-445-1983',
-	'BossLady', 'SMTWRFS', TRUE);
+	'SMTWRFS', TRUE);
 
 
 INSERT INTO instructors (instructor_first_name, instructor_last_name, 
 		   instructor_email, instructor_office_phone, 
-		   instructor_password,
 	           instructor_office_number, instructor_is_active)
-VALUES	('Patrick', 'Leahey', 'p.leahey@centre.edu', '667-984-6222',
-	'__the__22', 'B243', FALSE),
+VALUES	('Patrick', 'Rick', 'p.leahey@centre.edu', '667-984-6222',
+	'B243', FALSE),
 	('Bob', 'Allen', 'b.allen@centre.edu', '462-444-1732',
-	'DatabasesAndStructures', 'Q742', TRUE),
+	'Q742', TRUE),
 	('Daniel', 'Toth', 'd.toth@centre.edu', '123-456-1234',
-	'Oppussums', 'Y344', TRUE),
+	'Y344', TRUE),
 	('Mitchell', 'Bradshaw', 'm.bradshaw@centre.edu', '859-444-8516',
-	'centreAgain', 'B245', TRUE);
+	'B245', TRUE);
 
 
 INSERT INTO tests (instructor_id, test_date, test_length, test_version,

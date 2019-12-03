@@ -29,7 +29,7 @@ DROP TABLE IF EXISTS users CASCADE;
 --users of the DB, used in login screen of DB
 CREATE TABLE users(
 	PRIMARY KEY(user_id),
-	user_id			SERIAL,
+	user_id			NUMERIC(6) NOT NULL UNIQUE,
 	username 		VARCHAR(30) NOT NULL UNIQUE,
 	password		VARCHAR(255) NOT NULL,
 	role			VARCHAR(10) NOT NULL
@@ -46,7 +46,6 @@ CREATE TABLE students(
        student_mobile_number	CHAR(12)    NULL UNIQUE -- pattern: 123-456-7899
        				CONSTRAINT valid_student_phone_number
 				CHECK (student_mobile_number SIMILAR TO '[0-9]{3}\-[0-9]{3}\-[0-9]{4}'),
-       student_password		VARCHAR(25) NOT NULL, --maybe we need a bussiness rule here? Like to make it unique?
        student_extra_time	BOOLEAN DEFAULT FALSE, -- I'm not sure what kind of data type we gonna use for this... In FS, we said it's NUMERIC but the input mask is XX:XX.
        student_is_active 	BOOLEAN NOT NULL DEFAULT TRUE
 );
@@ -70,7 +69,6 @@ CREATE TABLE proctors(
        proctor_home_phone    	CHAR(12)    NULL UNIQUE -- pattern: 123-456-7899
        				CONSTRAINT valid_proctor_home_phone
 				CHECK (proctor_home_phone SIMILAR TO '[0-9]{3}\-[0-9]{3}\-[0-9]{4}'),
-       proctor_password         VARCHAR(25) NOT NULL,
        proctor_shift		VARCHAR(20),-- In the FS, The datatype is ALPHANUMERIC but is not green when I type, so I just use NUMERIC instead. 
        proctor_is_active        BOOLEAN NOT NULL DEFAULT TRUE
 );
@@ -86,7 +84,6 @@ CREATE TABLE instructors(
        instructor_office_phone	CHAR(12)    NULL UNIQUE -- pattern: 123-456-7899
        				CONSTRAINT valid_instructor_office_phone
 				CHECK (instructor_office_phone SIMILAR TO '[0-9]{3}\-[0-9]{3}\-[0-9]{4}'),
-       instructor_password	VARCHAR(25) NOT	NULL,
        instructor_office_number	VARCHAR(4)  NOT NULL,
        instructor_is_active     BOOLEAN NOT NULL DEFAULT TRUE
 );

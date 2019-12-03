@@ -41,5 +41,9 @@ $html .= '</html>';
 
 echo $html;
 
+//reset session variable
+/*session_start();
+echo $_SESSION["username"];
+echo $_SESSION["id"];*/
 
 ?>

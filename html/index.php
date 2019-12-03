@@ -31,11 +31,12 @@ $pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
 */
 
 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+// Iif the user is already logged in, them somewhere
+/*if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+	
     header("location: proctor.php");
     exit;
-}
+}*/
  
  
 // Define variables and initialize with empty values
@@ -59,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
     
-    // Validate credentials
+    // Validate username and password
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
         $sql = "SELECT user_id, username, password, role FROM users WHERE username = :username";
@@ -82,23 +83,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$role = $row["role"];
 
                         if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
+                            // Password is good, let's get out of here
                             
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
+                            // Store data in the session array
+			    session_start();
+			    $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
 			    // Redirect user to respective screen
 			    if($role === "proctor") {
-				    header("location: proctor.php?username=" . 					    $username);
+				    header("location: proctor.php?username=" . 					    					$username);
 			    }
 			    elseif($role === "student") {
-				    header("location: student.php?username=" .  				    $username);
+				    header("location: student.php?username=" .  				   					$username);
 			    }
 			    elseif($role === "instructor") {
-				    header("location: instructor.php?username=" 				    . $username);
+				    header("location: instructor.php?username=" 				    					. $username);
 			    }
 			    else {
 			       debug_message("User has no role, look into this");
@@ -106,11 +107,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
+			    $password_err = "Invalid username or login.";
+			    // So technically the username could be correct here,
+			    // but this is more secure
                         }
                     }
                 } else{
-                    // Display an error message if username doesn't exist
+                    // Username not found
                     $username_err = "No account found with that username.";
                 }
             } else{
@@ -139,7 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <div class="wrapper">
         <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+        <p>Please fill in your username and password to continue.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
