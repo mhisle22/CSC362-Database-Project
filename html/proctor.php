@@ -58,7 +58,14 @@ function today_schedule($pdo)
     debug_message('Returning from function.');
   }
 }
-
+if(isset($_POST['arr']))
+{
+  echo "student arrived!";
+}
+if(isset($_POST['end']))
+{
+  echo "student ended the exam!";
+}
 if(isset($_POST['del']))
 {
  //$stmt=$pdo->prepare("UPDATE reservations SET proctor_id=NULL WHERE test_id=?;");
