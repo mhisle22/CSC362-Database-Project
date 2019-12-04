@@ -11,20 +11,7 @@ require_once("functions.php");
 
 function display_upcoming($pdo)
 {
-/*	$sq = <<<_SQL_
-DROP VIEW IF EXISTS upcoming_instructors;
-_SQL_;
-	$sqq = <<<_SQL_
-CREATE VIEW upcoming_instructors 
-AS 
-SELECT CONCAT(student_first_name, student_last_name) AS student_name, test_date, test_start_time, test_length, test_status 
-FROM reservations 
-NATURAL JOIN students 
-NATURAL JOIN tests 
-WHERE tests.instructor_id = 1 
-GROUP BY students.student_first_name, students.student_last_name, tests.test_date, tests.test_start_time, tests.test_length, tests.test_status;
-_SQL_;
- */
+	
  
 	$sql ='SELECT * FROM upcoming_instructors';
 	
@@ -132,11 +119,17 @@ function main()
 	$pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
 	
 	//get the user info from header
-	$query_string = ($_SERVER['QUERY_STRING']);
+/*	$query_string = ($_SERVER['QUERY_STRING']);
 	$almost = explode("=", $query_string);
 	//	var_dump($almost);
-	$username = $almost[1];
-
+	$username = $almost[1];*/
+	session_start();
+	$username = $_SESSION['username'];
+	$id = $_SESSION['id'];
+	echo 'username: ';
+	echo $username;
+	echo 'id: ';
+	echo $id;
 	//basic layout of login page
 	$html = '<html>';
 	$html .= '<head>';

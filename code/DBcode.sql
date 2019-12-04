@@ -108,7 +108,7 @@ CREATE TABLE tests(
        test_length		INTERVAL NOT NULL,
        test_version		VARCHAR(20),--Length is not defined in the FS...
        test_course		VARCHAR(30) NOT NULL,
-       test_file_blob		bytea NOT NULL,--bytea is a blob type
+       test_file_blob		bytea,--bytea is a blob type
 
        test_start_time		TIME NOT NULL,
        test_status		VARCHAR(15) NOT NULL--incomplete's length is 10, but I put 15 here in case of the length of the other situation is more than 10.
