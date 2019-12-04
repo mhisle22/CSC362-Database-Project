@@ -97,7 +97,7 @@ function main()
 	$length_empty_err='';
 	$version_empty_err='';
 	$course_empty_err='';	
-	if(isset($_POST['submitbutton']))
+	if($_SERVER['REQUEST_METHOD']=='POST')
 	{
 	
 		
@@ -106,11 +106,11 @@ function main()
 		//test version must be NOT NULL
 		//course must be NOT NULL and 6 CHARS
 		
-		$sql = 'INSERT INTO tests (instructor_id, test_date, test_length, test_course, test_version, test_start_time) ';
-		$sql .= 'VALUES (:inst_id, :test_date, :test_length, :test_course, :test_version, :test_start_time)';
+		$sql = 'INSERT INTO tests (instructor_id, test_date, test_length, test_course, test_version, test_start_time, test_status) ';
+		$sql .= 'VALUES (:inst_id, :test_date, :test_length, :test_course, :test_version, :test_start_time, :test_status)';
 			
-		$sql2 = 'INSERT INTO tests (instructor_id, test_date, test_length, test_course, test_version, test_start_time, test_file_blob) ';
-		$sql2 .= 'VALUES (:inst_id, :test_date, :test_length, :test_course, :test_version, :test_start_time, test_file_blob)';
+		$sql2 = 'INSERT INTO tests (instructor_id, test_date, test_length, test_course, test_version, test_start_time, test_file_blob, test_status) ';
+		$sql2 .= 'VALUES (:inst_id, :test_date, :test_length, :test_course, :test_version, :test_start_time, :test_file_blob, :test_status)';
 
 		//write if statement to ensure none are null
 		if((!empty($_POST['instructor_id'])) && (!empty($_POST['student_id'])) && 
@@ -133,62 +133,64 @@ function main()
 			{
 				$stud_id_empty_err = 'student id must be a number';
 			}
-			elseif (DateTime::createFromFormat('mm/dd/yy', $_POST['test_date']) !== FALSE)
+			//doesn't work
+			elseif (DateTime::createFromFormat('mm/dd/yyyy', $_POST['test_date']) !== false)
 			{
 				$date_empty_err = 'Please enter a valid date';
 			}
-			
-	
-		/*	try
+			elseif (TimeSpan.TryParse($_POST['test_start_time'])===false)
 			{
-				if(empty($_POST['test_file_blob']))
-				{
-					echo 'hhhheeeeeeeeey';
-					$stmt = $pdo->prepare($sql);
-					echo 'test 1';
-					$data = [ 'inst_id'	=> $_POST['instructor_id'],
-						'test_date'	=> $_POST['test_date'],
-						'test_length'	=> $_POST['test_length'],
-						'test_course'	=> $_POST['test_course'],
-						'test_version'	=> $_POST['test_version'],
-						'test_start_time'	=> $_POST['test_start_time'] ];
-					echo 'test 2';
-					$stmt->execute($data);
-					echo 'hell week';
-					//here send back to instructor home page
-					
-				}
-				else
-				{
-					$stmt = $pdo->prepare($sql2);
-
-					$data = ['inst_id'	=> $_POST['instructor_id'],
-						'test_date'	=> $_POST['test_date'],
-						'test_length'	=> $_POST['test_length'],
-						'test_course'	=> $_POST['test_course'],
-						'test_version'	=> $_POST['test_version'],
-						'test_start_time'	=> $_POST['test_start_time'], 
-						'test_file_blob'	=> $_POST['test_file_blob'] ];
-					$stmt->execute($data);
-					echo 'well shit';
-					
-					//here send back to instructor home page
-			 
-				}
-				sendBack();
-			 		
+				$start_empty_err = 'Please enter a valid time';
 			}
-			catch (\PDOException $e)
+			else
 			{
-				if ($e->getCode() == 23505)
+				$good = 'Good';	
+				try
 				{
-					throw new \PDOException($e->getMessage(), (int)$e->getCode());
+					if(empty($_POST['test_file_blob']))
+					{
+						$stmt = $pdo->prepare($sql);
+						$data = [ 'inst_id'	=> $_POST['instructor_id'],
+							'test_date'	=> $_POST['test_date'],
+							'test_length'	=> $_POST['test_length'],
+							'test_version'	=> $_POST['test_version'],
+							'test_course'	=> $_POST['test_course'],
+							'test_start_time'	=> $_POST['test_start_time'],
+				       			'test_status'	=> $good];
+					
+						$stmt->execute($data);
+						
+					}
+					else
+					{
+						$stmt = $pdo->prepare($sql2);
+	
+						$data = ['inst_id'	=> $_POST['instructor_id'],
+							'test_date'	=> $_POST['test_date'],
+							'test_length'	=> $_POST['test_length'],
+							'test_course'	=> $_POST['test_course'],
+							'test_version'	=> $_POST['test_version'],
+							'test_start_time'	=> $_POST['test_start_time'], 
+							'test_file_blob'	=> $_POST['test_file_blob'],
+							'test_status'	=> $good];
+						$stmt->execute($data);
+			 
+					}
+					sendBack();
+			 		
 				}
-				else
+				catch (\PDOException $e)
 				{
-					throw new \PDOException($e->getMessage(), (int)$e->getCode());
+					if ($e->getCode() == 23505)
+					{
+						throw new \PDOException($e->getMessage(), (int)$e->getCode());
+					}
+					else
+					{
+						throw new \PDOException($e->getMessage(), (int)$e->getCode());
+					}
 				}
-			}*/
+			}
 		}
 		else
 		{
