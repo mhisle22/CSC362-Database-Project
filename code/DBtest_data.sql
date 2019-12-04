@@ -27,6 +27,10 @@ VALUES	('Cathy', 'Yan', 'cathy.yan@centre.edu', '445-987-0500',
 	FALSE, TRUE),
 	('Madi', 'Bates', 'madi.bates@centre.edu', '859-808-1665', 
 	FALSE, TRUE),
+	('John', 'Gerreaux', 'john.gerreaux@centre.edu', '859-808-2222', 
+	FALSE, TRUE),
+	('Makayla', 'Jones', 'makayla.jones@centre.edu', '859-844-1825', 
+	FALSE, TRUE),
 	('Justin', 'Germann', 'justin.germann@centre.edu', '859-808-4444', 
 	FALSE, TRUE);
 
@@ -104,4 +108,8 @@ VALUES	(1, 1, TRUE),
 INSERT INTO reservations (student_id, test_id, seat_id, test_time_stamp)
 VALUES	(1,1,1, '2019-10-19 10:23:54'),
 	(2,2,3, '2019-11-23 11:10:15'),
-	(3,1,4, '2019-11-23 11:00:00');
+	(3,1,4, '2019-11-23 11:00:00'),
+	(2,3,11, '2020-05-20 08:00:00'),
+	(2,5,18, '2020-04-29 18:00:00'),
+	(2,6,9, '2020-12-10 12:00:00'),
+	(2,4,9, '2020-12-10 06:00:00');

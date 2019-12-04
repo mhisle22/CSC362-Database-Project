@@ -128,17 +128,17 @@ CREATE TABLE seats(
 --linking table connecting students, tests, proctors, and seats
 CREATE TABLE reservations(
        PRIMARY KEY(student_id, test_id, seat_id, test_time_stamp),
-       student_id		SERIAL NOT NULL
+       student_id		INT NOT NULL
 				REFERENCES students (student_id)
 				ON DELETE RESTRICT,		
-       test_id			SERIAL NOT NULL
+       test_id			INT NOT NULL
 				REFERENCES tests (test_id)
 				ON DELETE RESTRICT,
-       seat_id			SERIAL NOT NULL
+       seat_id			INT NOT NULL
 				REFERENCES seats (seat_id)
 				ON DELETE RESTRICT,
        test_time_stamp		TIMESTAMP NOT NULL,
-       proctor_id               SERIAL NOT NULL
+       proctor_id               INT
 				REFERENCES proctors (proctor_id)
 				ON DELETE RESTRICT
 );

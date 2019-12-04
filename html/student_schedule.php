@@ -127,6 +127,10 @@ foreach($output as $row)
 	}
 }
 
+echo "</table>";
+
+returnButton();
+
 //TODO:
 //dummy data
 //adjust timing for past/present tests

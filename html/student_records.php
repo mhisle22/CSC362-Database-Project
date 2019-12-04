@@ -104,5 +104,8 @@ foreach($output as $row)
 	}
 }
 
+echo "</table>";
+
+returnButton();
 
 ?>

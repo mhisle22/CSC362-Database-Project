@@ -47,7 +47,11 @@ function connect_to_psql($db, $verbose=FALSE)
   }
 }
 
-
+function returnButton()
+{
+  echo '<br><br><br><br>';
+  echo '<a href="index.php">Return to login page</a>';
+}
 
 
 ?>

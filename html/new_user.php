@@ -4,8 +4,6 @@
  * 	Guns 'n Roses DB Project
  *
  * 	Code to add a new user to the user table
- * 	Based on code from
- * 	tutorialrepublic.com/php-tutorial/php-mysql-login-system.php
  */
 
 // include DB access code
@@ -26,66 +24,70 @@ $username_err = $password_err = $confirm_password_err = $id_err = "";
 // Process data when submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Validate username
+    // Code to check if username exists or not
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
     } else{
-        // Prepare a select statement
-        $sql = "SELECT user_id FROM users WHERE username = :username";
-        
+	    
+	$sql = "SELECT user_id FROM users WHERE username = :username";
+        // shorthand for did this query work or not
         if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
+	    // this binds variables as parameters to query, thus making it more secure
+	    // at least that's what the internet told me
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             
             // Set parameters
             $param_username = trim($_POST["username"]);
 	    debug_message('$sql= ' . $sql);
-            // Attempt to execute the prepared statement
-            if($stmt->execute()){
+            // run statement
+	    if($stmt->execute()){
+		// if the username was taken already, there will (should) be only one row
                 if($stmt->rowCount() == 1){
                     $username_err = "This username is already taken.";
                 } else{
                     $username = trim($_POST["username"]);
                 }
             } else{
-                debug_message("Oops! Something went wrong. Please try again later.");
+                debug_message("Error! Something went wrong. Please try again later.");
             }
         }
          
-        // Close statement
+        // need to close statement
         unset($stmt);
     }
     
-    // Validate password
+    // check password in same kind of way as above
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter a password.";     
     } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+	//password must be > 6 characters cuz security. And everyone does that anyways
+        $password_err = "Password must have at least 6 characters.";
     } else{
         $password = trim($_POST["password"]);
     }
     
-    // Validate confirm password
+    // check confirm password
     if(empty(trim($_POST["confirm_password"]))){
         $confirm_password_err = "Please confirm password.";     
     } else{
-        $confirm_password = trim($_POST["confirm_password"]);
+	$confirm_password = trim($_POST["confirm_password"]);
+	//if the two are not equal, print error message that they aren't equal
         if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Password did not match.";
         }
     }
 
-    // Validate user id
+    // check user id in once again the same way
     if(empty(trim($_POST["id"]))){
         $id_err = "Please enter an id.";     
     } elseif(strlen(trim($_POST["id"])) > 6){
+	// ID's must be Centre style, this can be changed in future
         $id_err = "ID must be between 0 and 6 characters.";
     } else{
         $id = trim($_POST["id"]);
     } 
 
-    //lastly, get data for new user role
-    //written yours truly, Mark Hisle
+    //lastly, get data for new user role from radio buttons
     $role = NULL;
     if(isset($_POST["role"]))
     {
@@ -97,14 +99,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
 
-    // Check input errors before inserting in database
+    // Check if there are errors one last time before moving on
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($id_err)){
         
-        // Prepare an insert statement
+        // insert statement
         $sql = "INSERT INTO users (user_id, username, password, role) VALUES (:user_id, :username, :password, :role)";
-         
+        // once again, shorthand for continue on if this worked
         if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
+            // bind variables as parameters
 	    $stmt->bindParam(":user_id", $param_id, PDO::PARAM_STR);
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
 	    $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
@@ -114,15 +116,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // Set parameters
             $param_username = $username;
+	    
 	    //!!!!!!! NOTE: This is where salting takes place !!!!!!!
 	    $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+	    
 	    $param_role = $role;
 	    $param_id = $id;
             
-            // Attempt to execute the prepared statement
+            // attempt to execute the prepared statement
             if($stmt->execute()){
-                // Redirect to login page
-                header("location: index.php");
+		// go back to login page, indicating success
+		$success = True;
+                header("location: index.php?success=" . $success);
             } else{
                 echo "Something went wrong. Please try again later.";
             }

@@ -22,12 +22,13 @@ require_once("functions.php");
 $pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
 
 /*
- * Code from same soucr as register new user code
- * This is not my original code, although several
- * modifications have been made to it for 
- * compaitiblity with this project.
+ * Main login page
  *
- * See new_user.php for link.
+ * Redirects user to their respective role's main page
+ * depending upon whether they are a student, instructor,
+ * or proctor.
+ *
+ * See new_user.php for more info.
 */
 
 
@@ -102,6 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				    header("location: instructor.php?username=" 				    					. $username);
 			    }
 			    else {
+			       // idk how this would happen but be prepared I guess
 			       debug_message("User has no role, look into this");
 			    }
 
@@ -117,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username_err = "No account found with that username.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                debug_message("Error- something went wrong. Please try again later.");
             }
         }
         
@@ -128,6 +130,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     unset($pdo);
 }
+
+//lastly, print a message if we successfuly redirected from registration page
+$query_string = ($_SERVER['QUERY_STRING']);
+$almost = explode("=", $query_string);
+if(isset($almost[1])) {
+	$success = $almost[1];
+
+	if($success)
+	{
+		echo "<h4 style='color:green'>Successfully registered user!</h4>";
+	}
+}
+
 
 ?>
 
@@ -143,10 +158,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="wrapper">
         <h2>Login</h2>
         <p>Please fill in your username and password to continue.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+		<input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+		<!-- This lets you do the fancy error popup -->
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>    
 	    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
@@ -160,7 +176,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
         </form>
-    </div>
+</div>
 
 <br /><br /><h3>Don't have an account?</h3>
 <h4>Click here to create a new user.</h4>
