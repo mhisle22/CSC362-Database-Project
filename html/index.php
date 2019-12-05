@@ -18,7 +18,6 @@ error_reporting(E_ALL);
 //phpinfo();
 require_once("functions.php");
 
-
 $pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
 
 /*
@@ -144,6 +143,8 @@ if(isset($almost[1])) {
 }
 
 
+addCSS();
+
 ?>
 
 <!DOCTYPE html>
@@ -153,7 +154,7 @@ if(isset($almost[1])) {
 </head>
 <body>
 <h1>Welcome to the ACME Testing Center Database!</h1>
-<h4>Please provide your login informtation to continue.</h4>
+<h4>Please provide your login information to continue.</h4>
 
 <div class="wrapper">
         <h2>Login</h2>
@@ -178,7 +179,7 @@ if(isset($almost[1])) {
         </form>
 </div>
 
-<br /><br /><h3>Don't have an account?</h3>
+<br /><h3>Don't have an account?</h3>
 <h4>Click here to create a new user.</h4>
 <form action="new_user.php">
 <input type="submit" name="create_account" value="Create an account">

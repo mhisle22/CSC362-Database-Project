@@ -19,7 +19,7 @@ function today_schedule($pdo,$id)
   try
   {
     $stmt = $pdo->query($sql);
-    //debug_message('Query successful');
+    debug_message('Query successful');
   }
   catch(\PDOException $e)
   {
@@ -27,7 +27,7 @@ function today_schedule($pdo,$id)
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
   }
   //display
-  echo "<h3>Today's Schedule</h3>";
+  echo "<h1>Today's schedule</h1>";
   $labels = ['Student Name', 'Test ID','Seat ID', 'Start Time', 'End Time', '', '', ''];
   $cols =['proctor_id','student_name','test_id','seat_id','test_start_time','test_end_time'];
   echo "<table>";
@@ -39,7 +39,7 @@ function today_schedule($pdo,$id)
   echo "</tr>\n";
   foreach ($stmt as $row)
   {
-    if(strtotime($row['test_date'])==strtotime(date("Y-m-d"))){
+    if(strtotime($row['test_date'])==strtotime('now')){
     echo "<tr>\n";
     foreach (array_slice($cols, 1) as $col)
     {
@@ -60,23 +60,26 @@ function today_schedule($pdo,$id)
     echo "<input type='hidden' value='$testid' name='intestid'>";
     echo "<td><input type='submit' value='Incomplete' name='inc'></td>\n";
     echo "</tr>\n";
-  }}
-    echo "</table>";
+  }} 
+    echo "</table>\n\n";
     echo "</form>";
 }
 
 if(isset($_POST['arr']))
 {
+  echo "student arrived!";
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Started' WHERE test_id=?;");
   $stmt->execute([$_POST['artestid']]);
 }
 if(isset($_POST['end']))
-{  
+{
+  echo "student ended the exam!";
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Completed' WHERE test_id=?;");
   $stmt->execute([$_POST['entestid']]);
 }
 if(isset($_POST['inc']))
 {
+  echo "Test is not completed";
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Incomplete' WHERE test_id=?;");
   $stmt->execute([$_POST['intestid']]);
 }
@@ -87,7 +90,7 @@ function work_schedule($pdo,$id)
   try
   {
     $stmt = $pdo->query($sql);
-    //debug_message('Query successful');
+    debug_message('Query successful');
   }
   catch (\PDOException $e)
   {
@@ -95,9 +98,9 @@ function work_schedule($pdo,$id)
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
   }
   //display
-  echo "<h3>Work Schedule</h3>";
+  echo "<h1>Work schedule</h1>";
   echo '<form method="post">' . "\n";
-  $labels = ['Date', 'Time Slot',''];
+  $labels = ['Date', 'Time Slot','', ''];
   $cols =['proctor_id','test_date','time_slot'];
   echo "<table>";
   echo "<tr>";
@@ -108,7 +111,7 @@ function work_schedule($pdo,$id)
   echo "</tr>\n";
   foreach ($stmt as $row)
   {
-    if(strtotime($row['test_date']) > strtotime(date("Y-m-d"))){
+    if(strtotime($row['test_date']) > strtotime('now')){
     echo "<tr>\n";
     foreach (array_slice($cols, 1) as $col)
     {
@@ -124,7 +127,7 @@ function work_schedule($pdo,$id)
     echo "</form>";
     echo "</tr>\n";
   }}
-  echo "</table>";
+  echo "</table>\n\n";
 }
 
 if(isset($_POST['delete']))
@@ -141,6 +144,7 @@ function main($pdo)
   $username=explode(".", $name[1]);
   $firstname=ucfirst($username[0]);
   $lastname=ucfirst($username[1]);
+
   session_start();
   //$_SESSION["username"];
   $id=$_SESSION["id"];
@@ -154,7 +158,7 @@ function main($pdo)
   $html .= '</head>';
   $html .= '<body>';
   $html .= '<h1>Proctor Screen</h1>';
-  $html .= '<h5>Logged in as ' . $firstname . ' '.$lastname.'</h5>';
+  $html .= '<h2>Logged in as ' . $firstname . ' '.$lastname.'</h2>';
   $html .= '</body>';
   $html .= '</html>';	
   echo $html;

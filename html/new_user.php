@@ -8,6 +8,7 @@
 
 // include DB access code
 require_once "functions.php";
+addCSS();
 
 //set up error handling, can turn off once in production mode
 ini_set('display_errors', 1);

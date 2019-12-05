@@ -67,16 +67,19 @@ function today_schedule($pdo,$id)
 
 if(isset($_POST['arr']))
 {
+  echo "student arrived!";
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Started' WHERE test_id=?;");
   $stmt->execute([$_POST['artestid']]);
 }
 if(isset($_POST['end']))
-{  
+{
+  echo "student ended the exam!";
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Completed' WHERE test_id=?;");
   $stmt->execute([$_POST['entestid']]);
 }
 if(isset($_POST['inc']))
 {
+  echo "Test is not completed";
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Incomplete' WHERE test_id=?;");
   $stmt->execute([$_POST['intestid']]);
 }

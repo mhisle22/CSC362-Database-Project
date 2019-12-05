@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 //phpinfo();
 require_once("functions.php");
-
+addCSS();
 
 $pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
 
