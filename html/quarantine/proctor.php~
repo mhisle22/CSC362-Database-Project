@@ -19,7 +19,7 @@ function today_schedule($pdo,$id)
   try
   {
     $stmt = $pdo->query($sql);
-    debug_message('Query successful');
+    //debug_message('Query successful');
   }
   catch(\PDOException $e)
   {
@@ -27,7 +27,7 @@ function today_schedule($pdo,$id)
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
   }
   //display
-  echo "<h1>Today's schedule</h1>";
+  echo "<h3>Today's Schedule</h3>";
   $labels = ['Student Name', 'Test ID','Seat ID', 'Start Time', 'End Time', '', '', ''];
   $cols =['proctor_id','student_name','test_id','seat_id','test_start_time','test_end_time'];
   echo "<table>";
@@ -39,7 +39,7 @@ function today_schedule($pdo,$id)
   echo "</tr>\n";
   foreach ($stmt as $row)
   {
-    if(strtotime($row['test_date'])==strtotime('now')){
+    if(strtotime($row['test_date'])==strtotime('2019-12-05')){
     echo "<tr>\n";
     foreach (array_slice($cols, 1) as $col)
     {
@@ -50,36 +50,34 @@ function today_schedule($pdo,$id)
     $testid=$row['test_id'];
     echo '<form method="post">' . "\n";                                       
     echo "<input type='hidden' value='$testid' name='artestid'>";
-    echo "<td><input type='submit' value='Arrived' name='arr'></td>\n";
+    echo "<td><input type='submit' value='Arrived' name='arr' id='arrived'></td>\n";
     echo "</form>";
     echo '<form method="post">' . "\n";
     echo "<input type='hidden' value='$testid' name='entestid'>";
-    echo "<td><input type='submit' value='Ended' name='end'></td>\n";
+    echo "<td><input type='submit' value='Ended' name='end' disabled id='ended'></td>\n";
     echo "</form>";
     echo '<form method="post">' . "\n";
     echo "<input type='hidden' value='$testid' name='intestid'>";
     echo "<td><input type='submit' value='Incomplete' name='inc'></td>\n";
     echo "</tr>\n";
-  }} 
-    echo "</table>\n\n";
+  }}
+    echo "</table>";
     echo "</form>";
 }
 
 if(isset($_POST['arr']))
 {
-  echo "student arrived!";
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Started' WHERE test_id=?;");
   $stmt->execute([$_POST['artestid']]);
+  
 }
 if(isset($_POST['end']))
-{
-  echo "student ended the exam!";
+{  
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Completed' WHERE test_id=?;");
   $stmt->execute([$_POST['entestid']]);
 }
 if(isset($_POST['inc']))
 {
-  echo "Test is not completed";
   $stmt=$pdo->prepare("UPDATE tests SET test_status='Incomplete' WHERE test_id=?;");
   $stmt->execute([$_POST['intestid']]);
 }
@@ -90,7 +88,7 @@ function work_schedule($pdo,$id)
   try
   {
     $stmt = $pdo->query($sql);
-    debug_message('Query successful');
+    //debug_message('Query successful');
   }
   catch (\PDOException $e)
   {
@@ -98,9 +96,9 @@ function work_schedule($pdo,$id)
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
   }
   //display
-  echo "<h1>Work schedule</h1>";
+  echo "<h3>Work Schedule</h3>";
   echo '<form method="post">' . "\n";
-  $labels = ['Date', 'Time Slot','', ''];
+  $labels = ['Date', 'Time Slot',''];
   $cols =['proctor_id','test_date','time_slot'];
   echo "<table>";
   echo "<tr>";
@@ -111,7 +109,7 @@ function work_schedule($pdo,$id)
   echo "</tr>\n";
   foreach ($stmt as $row)
   {
-    if(strtotime($row['test_date']) > strtotime('now')){
+    if(strtotime($row['test_date']) > strtotime(date("Y-m-d"))){
     echo "<tr>\n";
     foreach (array_slice($cols, 1) as $col)
     {
@@ -127,7 +125,7 @@ function work_schedule($pdo,$id)
     echo "</form>";
     echo "</tr>\n";
   }}
-  echo "</table>\n\n";
+  echo "</table>";
 }
 
 if(isset($_POST['delete']))
@@ -144,7 +142,6 @@ function main($pdo)
   $username=explode(".", $name[1]);
   $firstname=ucfirst($username[0]);
   $lastname=ucfirst($username[1]);
-
   session_start();
   //$_SESSION["username"];
   $id=$_SESSION["id"];
@@ -158,7 +155,10 @@ function main($pdo)
   $html .= '</head>';
   $html .= '<body>';
   $html .= '<h1>Proctor Screen</h1>';
-  $html .= '<h2>Logged in as ' . $firstname . ' '.$lastname.'</h2>';
+  $html .= '<h5>Logged in as ' . $firstname . ' '.$lastname.'</h5>';
+ /* $html .= '<script>';
+  $html .= 'function arrived(){ document.getElementById("arrived").disabled = true; document.getElementById("ended").disabled = false;}'
+  $html .= '</script>';*/
   $html .= '</body>';
   $html .= '</html>';	
   echo $html;
@@ -170,3 +170,8 @@ function main($pdo)
 main($pdo);
 
 ?>
+<script type="text/JavaScript">
+function arrived(){
+document.getElementById("arrived").disabled = true;
+document.getElementById("ended").disabled = false;}
+</script>
