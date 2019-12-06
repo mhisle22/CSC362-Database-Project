@@ -19,8 +19,8 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 	<div class="form-group <?php echo (!empty($inst_id_empty_err)) ? 'has-error' : ''; ?>">
 		<tr>
 			<td>Instructor ID</td>
-			<td><input type='text' name='instructor_id' placeholder='ex:000000' class='form-control' />
-			<span class='help-block'><?php echo $inst_id_empty_err; ?></span></td>
+			<td><input type='text' name='instructor_id' placeholder='ex:000000' class='form-control' /></td>
+			<td><span class='help-block'><?php echo $inst_id_empty_err; ?></span></td>
 			
 		</tr>
 	</div>
@@ -29,7 +29,7 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 			<td>Student ID</td>
 			<td><input type='text' name='student_id' placeholder='ex: 000000' class='form-control'  />
 			<span class='help-block'><?php echo $stud_id_empty_err; ?></span></td>
-			
+			<td> </td>
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($date_empty_err)) ? 'has-error' : ''; ?>">
@@ -37,7 +37,7 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 			<td>Test Date</td>
 			<td><input type='text' name='test_date' placeholder='ex: mm/dd/yyyy' class='form-control' />
 			<span class='help-block'><?php echo $date_empty_err; ?></span></td>
-			
+			<td> </td>
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($start_empty_err)) ? 'has-error' : ''; ?>">
@@ -62,13 +62,13 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 			</select>
 			<span class='help-block'><?php echo $start_empty_err; ?></span>	</td>
 			
-			
+			<td> </td>
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($length_empty_err)) ? 'has-error' : ''; ?>">
 		<tr>
 			<td>Test Length</td>
-			<td><input type='text' name='test_length' placeholder='ex: 120' class='form-control' />	Minutes
+			<td><input type='text' name='test_length' placeholder='ex: 120' class='form-control' />			<td>Minutes</td>
 			<span class='help-block'><?php echo $length_empty_err; ?></span></td>
 			
 		</tr>
@@ -78,7 +78,7 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 			<td>Test Version</td>
 			<td><input type='text' name='test_version' placeholder='ex: A' class='form-control' />
 			<span class='help-block'><?php echo $version_empty_err; ?></span></td>
-			
+			<td> </td>
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($course_empty_err)) ? 'has-error' : ''; ?>">
@@ -86,18 +86,18 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 			<td>Course</td>
 			<td><input type='text' name='test_course' placeholder='ex:CSC220a' class='form-control' />
 			<span class='help-block'><?php echo $course_empty_err; ?></span></td>
-			
-			
+			<td> </td>
 		</tr>
 	</div>
 	<tr>
 		<td>File</td><td><input type='file' name='test_blob' /></td>
-			
+			<td> </td>
 	</tr>
 	<tr>
 
 		<td><button type='submitTest' name='submitbutton' value='submitTest'>Create Test</button></td>
 	
+			<td> </td>
 			<td> </td>
 	</tr>
 	</table>
@@ -179,7 +179,7 @@ function main()
 			else
 			{
 					
-				$good = 'Not Started';	
+				$good = 'Good';	
 				try
 				{
 					$length = (int)$_POST['test_length'] * 60;
@@ -266,7 +266,5 @@ function main()
 }
 
 main();
-
-returnButton();
 ?>
 

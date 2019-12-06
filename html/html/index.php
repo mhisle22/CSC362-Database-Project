@@ -122,8 +122,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
         
+        // Close statement
+        unset($stmt);
     }
     
+    // Close connection
+    unset($pdo);
 }
 
 //lastly, print a message if we successfuly redirected from registration page
@@ -152,25 +156,28 @@ addCSS();
 <h1>Welcome to the ACME Testing Center Database!</h1>
 <h4>Please provide your login information to continue.</h4>
 
-<h2>Login</h2>
-<p>Please fill in your username and password to continue.</p>
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-	<!-- This lets you do the fancy error popup -->
-	<div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-        	<label>Username</label>
+<div class="wrapper">
+        <h2>Login</h2>
+        <p>Please fill in your username and password to continue.</p>
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <label>Username</label>
 		<input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-		<!-- This also lets you do the fancy error popup -->
+		<!-- This lets you do the fancy error popup -->
                 <span class="help-block"><?php echo $username_err; ?></span>
-	</div>    
-	<div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-		<br />
+            </div>    
+	    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+	    <br />
                 <label>Password</label>
                 <input type="password" name="password" class="form-control">
                 <span class="help-block"><?php echo $password_err; ?></span>
-	</div>
-	<br />
-	<input type="submit" class="btn btn-primary" value="Login">
-</form>
+	    </div>
+	    <br />
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+        </form>
+</div>
 
 <br /><h3>Don't have an account?</h3>
 <h4>Click here to create a new user.</h4>

@@ -82,11 +82,17 @@ function main()
 	$pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
 	
 	//get the user info from header
-
+/*	$query_string = ($_SERVER['QUERY_STRING']);
+	$almost = explode("=", $query_string);
+	//	var_dump($almost);
+	$username = $almost[1];*/
 	session_start();
 	$username = $_SESSION['username'];
 	$id = $_SESSION['id'];
-	
+	echo 'username: ';
+	echo $username;
+	echo 'id: ';
+	echo $id;
 	//basic layout of login page
 	$html = '<html>';
 	$html .= '<head>';

@@ -39,7 +39,7 @@ function today_schedule($pdo,$id)
   echo "</tr>\n";
   foreach ($stmt as $row)
   {
-    if(strtotime($row['test_date'])==strtotime(date("Y/m/d"))){
+    if(strtotime($row['test_date'])==strtotime('2019-12-05')){
     echo "<tr>\n";
     foreach (array_slice($cols, 1) as $col)
     {
@@ -54,7 +54,7 @@ function today_schedule($pdo,$id)
     echo "</form>";
     echo '<form method="post">' . "\n";
     echo "<input type='hidden' value='$testid' name='entestid'>";
-    echo "<td><input type='submit' value='Ended' name='end' id='ended'></td>\n";
+    echo "<td><input type='submit' value='Ended' name='end' disabled id='ended'></td>\n";
     echo "</form>";
     echo '<form method="post">' . "\n";
     echo "<input type='hidden' value='$testid' name='intestid'>";
@@ -67,12 +67,13 @@ function today_schedule($pdo,$id)
 
 if(isset($_POST['arr']))
 {
-  $stmt=$pdo->prepare("UPDATE tests SET test_status='Started' WHERE test_id=? AND test_status!='Completed';");
-  $stmt->execute([$_POST['artestid']]);  
+  $stmt=$pdo->prepare("UPDATE tests SET test_status='Started' WHERE test_id=?;");
+  $stmt->execute([$_POST['artestid']]);
+  
 }
 if(isset($_POST['end']))
 {  
-  $stmt=$pdo->prepare("UPDATE tests SET test_status='Completed' WHERE test_id=? AND test_status='Started';");
+  $stmt=$pdo->prepare("UPDATE tests SET test_status='Completed' WHERE test_id=?;");
   $stmt->execute([$_POST['entestid']]);
 }
 if(isset($_POST['inc']))
@@ -168,10 +169,9 @@ function main($pdo)
 }
 main($pdo);
 
-returnButton();
-
 ?>
-
-
-
-
+<script type="text/JavaScript">
+function arrived(){
+document.getElementById("arrived").disabled = true;
+document.getElementById("ended").disabled = false;}
+</script>

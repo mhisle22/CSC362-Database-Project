@@ -167,6 +167,7 @@ function main()
 			{
 				$date_empty_err = 'Please enter a valid date';
 			}
+<<<<<<< HEAD
 			elseif(is_numeric($_POST['test_length'])==false)
 			{
 				$length_empty_err = 'Please enter a valid test length';
@@ -221,6 +222,29 @@ function main()
 						$reserveStmt->execute($data2);
 
 
+=======
+			elseif (TimeSpan.TryParse($_POST['test_start_time'])===false)
+			{
+				$start_empty_err = 'Please enter a valid time';
+			}
+			else
+			{
+				$good = 'Good';	
+				try
+				{
+					if(empty($_POST['test_file_blob']))
+					{
+						$stmt = $pdo->prepare($sql);
+						$data = [ 'inst_id'	=> $_POST['instructor_id'],
+							'test_date'	=> $_POST['test_date'],
+							'test_length'	=> $_POST['test_length'],
+							'test_version'	=> $_POST['test_version'],
+							'test_course'	=> $_POST['test_course'],
+							'test_start_time'	=> $_POST['test_start_time'],
+				       			'test_status'	=> $good];
+					
+						$stmt->execute($data);
+>>>>>>> a8af7201e05908aefac2634281cbc147b0ce745e
 						
 					}
 					else
@@ -238,8 +262,13 @@ function main()
 						$stmt->execute($data);
 			 
 					}
+<<<<<<< HEAD
 					//sendBack();
 					header("Location: /test_created.php");
+=======
+					sendBack();
+			 		
+>>>>>>> a8af7201e05908aefac2634281cbc147b0ce745e
 				}
 				catch (\PDOException $e)
 				{
@@ -266,7 +295,5 @@ function main()
 }
 
 main();
-
-returnButton();
 ?>
 
