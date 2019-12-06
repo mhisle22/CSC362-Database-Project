@@ -17,7 +17,10 @@ DROP VIEW IF EXISTS students_tests;
 DROP VIEW IF EXISTS upcoming_instructors;
 DROP VIEW IF EXISTS work_schedule;
 DROP VIEW IF EXISTS today_schedule;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a8af7201e05908aefac2634281cbc147b0ce745e
 
 
 CREATE VIEW students_views
