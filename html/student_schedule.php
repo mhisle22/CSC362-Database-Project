@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 //phpinfo();
 require_once("functions.php");
-
+addCSS();
 
 $pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
 
@@ -35,9 +35,9 @@ if(isset($_POST['deny'])) {
 	$test_id = $_POST['hidden_id'];
 	
 	$sql = 'DELETE FROM reservations';
-	$sql .= "WHERE student_id = '{$id}' AND test_id = '{$test_id}' ";
+	$sql .= " WHERE student_id = '{$id}' AND test_id = '{$test_id}' ";
 
-	debug_message('$sql = ' . $sql);	
+	//debug_message('$sql = ' . $sql);	
 	
 	try {
 		$pdo->query($sql);
@@ -79,7 +79,8 @@ $sql = 'SELECT test_time_stamp, instructor_last_name, test_course, test_length, 
 $sql .= ' FROM reservations';
 $sql .= ' NATURAL JOIN tests';
 $sql .= ' NATURAL JOIN instructors';
-$sql .= " WHERE student_id = '{$id}';";
+$sql .= " WHERE student_id = '{$id}'";
+$sql .= 'ORDER BY test_time_stamp;';
 
 //debug_message('$sql = ' . $sql);
 
@@ -121,7 +122,7 @@ foreach($output as $row)
 	echo '<td>' . $length . '</td>';
 	echo "<input type='hidden' name='hidden_id' value='" . $row['test_id']
 	. "'>";
-	echo "<td><input type='submit' value='Deny' name='deny'";
+	echo "<td><input type='submit' value='Deny' name='deny'</td>";
 
 	echo '</form></tr>';
 	}

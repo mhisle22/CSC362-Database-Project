@@ -17,6 +17,10 @@ DROP VIEW IF EXISTS students_tests;
 DROP VIEW IF EXISTS upcoming_instructors;
 DROP VIEW IF EXISTS work_schedule;
 DROP VIEW IF EXISTS today_schedule;
+<<<<<<< HEAD
+
+=======
+>>>>>>> a8af7201e05908aefac2634281cbc147b0ce745e
 
 
 CREATE VIEW students_views
@@ -80,26 +84,29 @@ SELECT test_time_stamp, test_id, test_course
   FROM reservations
 	NATURAL JOIN tests;
 
-
 CREATE VIEW upcoming_instructors
 AS
-SELECT student_first_name || ' ' || student_last_name AS student_name, test_date, test_start_time, test_length, test_status
+SELECT student_first_name || ' ' || student_last_name AS student_name, test_date, test_start_time, test_length, test_status, instructor_id
 FROM reservations
 NATURAL JOIN students
 NATURAL JOIN tests
-GROUP BY students.student_first_name, students.student_last_name, tests.test_date, tests.test_start_time, tests.test_length, tests.test_status;
+GROUP BY tests.instructor_id, students.student_first_name, students.student_last_name, tests.test_date, tests.test_start_time, tests.test_length, tests.test_status;
+
 
 CREATE VIEW today_schedule AS
-SELECT proctor_id, student_first_name || ' ' || student_last_name AS student_name, test_id, test_start_time, test_start_time+test_length AS test_end_time
+SELECT proctor_id, test_date,student_first_name || ' ' || student_last_name AS student_name, test_id, seat_id, test_start_time, test_start_time+test_length AS test_end_time
 FROM proctors
 NATURAL JOIN reservations
 NATURAL JOIN tests
-NATURAL JOIN students;
+NATURAL JOIN students
+NATURAL JOIN seats
+ORDER BY test_start_time;
+
+
 
 CREATE VIEW work_schedule AS
 SELECT proctor_id, test_id,test_date,test_start_time || '-' ||(test_start_time+test_length) AS time_slot
 FROM proctors
 NATURAL JOIN reservations
-NATURAL JOIN tests;
-
-
+NATURAL JOIN tests
+ORDER BY test_date;
