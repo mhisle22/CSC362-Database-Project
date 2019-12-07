@@ -7,27 +7,63 @@ error_reporting(E_ALL);
 
 //phpinfo();
 require_once('functions.php');
+addCSS();
 
 function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_err, $start_empty_err, $length_empty_err, $version_empty_err, $course_empty_err)
 {
+	$sq = 'SELECT student_id, student_name FROM students_views';
+	try
+	{
+		$students = $pdo->query($sq);
+		$students = $students->fetchAll();
+	}
+	catch(\PDOException $e)
+	{
+		throw new \PDOException($e->getMessage(), (int)$e->getCode());
+	}
+
+	//testing the query
+	//var_dump($students);
+	$studentList = [];
+	foreach($students as $key)
+	{
+	//	var_dump($key['student_id']);
+	//	var_dump($key['student_name']);	
+		array_push($studentList, $key['student_name']);
 	
+	}
+	//	var_dump($students[0]['student_name']);
+//	var_dump($studentList);
+
 	$html = <<<_HTML_
 	<h1>Create New Test</h1>
 	<form method='post'>
 	<table>
 	<div class="form-group <?php echo (!empty($inst_id_empty_err)) ? 'has-error' : ''; ?>">
 		<tr>
-			<td>Instructur ID</td>
-			<td><input type='text' name='instructor_id' placeholder='ex:000000' class='form-control' /></td>
-			<td><span class='help-block'><?php echo $inst_id_empty_err; ?></span></td>
+			<td>Instructor ID</td>
+			<td><input type='text' name='instructor_id' placeholder='ex:000000' class='form-control' />
+			<span class='help-block'><?php echo $inst_id_empty_err; ?></span></td>
 			
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($stud_id_empty_err)) ? 'has-error' : ''; ?>">
 		<tr>
 			<td>Student ID</td>
-			<td><input type='text' name='student_id' placeholder='ex: 000000' class='form-control'  />
-			<span class='help-block'><?php echo $stud_id_empty_err; ?></span></td>
+			<td><select name= 'student_id'>
+			<option value='1'>$studentList[0]</option>
+			<option value='2'>$studentList[1]</option>
+			<option value='3'>$studentList[2]</option>
+			<option value='4'>$studentList[3]</option>
+			<option value='5'>$studentList[4]</option>
+			<option value='6'>$studentList[5]</option>
+			<option value='7'>$studentList[6]</option>
+			<option value='8'>$studentList[7]</option>
+			<option value='9'>$studentList[8]</option>
+			<option value='10'>$studentList[9]</option>
+			<option value='11'>$studentList[10]</option>
+			</select></td>
+			
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($date_empty_err)) ? 'has-error' : ''; ?>">
@@ -35,20 +71,41 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 			<td>Test Date</td>
 			<td><input type='text' name='test_date' placeholder='ex: mm/dd/yyyy' class='form-control' />
 			<span class='help-block'><?php echo $date_empty_err; ?></span></td>
-		</tr>
+			
+		</tr
+
 	</div>
 	<div class="form-group <?php echo (!empty($start_empty_err)) ? 'has-error' : ''; ?>">
 		<tr>
 			<td>Test Start Time</td>
-			<td><input type='text' name='test_start_time' placeholder='ex: 10:00' class='form-control' />
+			<td><select name= 'test_start_time'>
+			
+				<option value='8:00'>8:00 am</option>
+				<option value='8:30'>8:30 am</option>
+				<option value='9:00'>9:00 am</option>
+				<option value='9:30'>9:30 am</option>
+				<option value='10:00'>10:00 am</option>
+				<option value='10:30'>10:30 am</option>
+				<option value='11:00'>11:00 am</option>
+				<option value='11:30'>11:30 am</option>
+				<option value='1:00'>1:00 pm</option>
+				<option value='1:30'>1:30 pm</option>
+				<option value='2:00'>2:00 pm</option>
+				<option value='2:30'>2:30 pm</option>
+				<option value='3:00'>3:00 pm</option>
+				<option value='3:30'>3:30 pm</option>
+			</select>
 			<span class='help-block'><?php echo $start_empty_err; ?></span>	</td>
+			
+			
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($length_empty_err)) ? 'has-error' : ''; ?>">
 		<tr>
 			<td>Test Length</td>
-			<td><input type='text' name='test_length' placeholder='ex: 120 (minutes)' class='form-control' />
+			<td><input type='text' name='test_length' placeholder='ex: 120' class='form-control' />	Minutes
 			<span class='help-block'><?php echo $length_empty_err; ?></span></td>
+			
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($version_empty_err)) ? 'has-error' : ''; ?>">
@@ -56,6 +113,7 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 			<td>Test Version</td>
 			<td><input type='text' name='test_version' placeholder='ex: A' class='form-control' />
 			<span class='help-block'><?php echo $version_empty_err; ?></span></td>
+			
 		</tr>
 	</div>
 	<div class="form-group <?php echo (!empty($course_empty_err)) ? 'has-error' : ''; ?>">
@@ -63,21 +121,26 @@ function displayForm($pdo, $inst_id_empty_err, $stud_id_empty_err, $date_empty_e
 			<td>Course</td>
 			<td><input type='text' name='test_course' placeholder='ex:CSC220a' class='form-control' />
 			<span class='help-block'><?php echo $course_empty_err; ?></span></td>
+			
+			
 		</tr>
 	</div>
 	<tr>
 		<td>File</td><td><input type='file' name='test_blob' /></td>
+			
 	</tr>
 	<tr>
 
 		<td><button type='submitTest' name='submitbutton' value='submitTest'>Create Test</button></td>
 	
+			<td> </td>
 	</tr>
 	</table>
 	</form>
 _HTML_;
 echo $html;
 }
+/*
 function sendBack()
 {
 	$html = <<<_HTML_
@@ -87,6 +150,7 @@ function sendBack()
 _HTML_;
 	echo $html;
 }
+ */
 function main()
 {
 	$pdo = connect_to_psql('gunsnrosesproject', $verbose=TRUE);
@@ -112,53 +176,85 @@ function main()
 		$sql2 = 'INSERT INTO tests (instructor_id, test_date, test_length, test_course, test_version, test_start_time, test_file_blob, test_status) ';
 		$sql2 .= 'VALUES (:inst_id, :test_date, :test_length, :test_course, :test_version, :test_start_time, :test_file_blob, :test_status)';
 
+		$reservation = 'INSERT INTO reservations (student_id, test_id, seat_id, test_time_stamp) ';
+		$reservation .='VALUES (:stud_id, :test_id, :seat_id, :test_time_stamp)';
+
+		$findTestID = 'SELECT test_id FROM tests WHERE instructor_id = :instructor_id AND test_date = :test_date AND test_start_time = :test_start_time';
+
 		//write if statement to ensure none are null
 		if((!empty($_POST['instructor_id'])) && (!empty($_POST['student_id'])) && 
-			(!empty($_POST['test_date'])) && (!empty($_POST['test_start_time'])) && 
+			(!empty($_POST['test_date'])) &&  
 			(!empty($_POST['test_length'])) && (!empty($_POST['test_version'])) && 
 			(!empty($_POST['test_course'])))
 		{
-			
-			//test date=date
-			//test start time=time
-			//test length = interval 
-
-			//test length must be less than 4 hours
-			//test start time must be within time
+			 
+	
 			if (is_numeric($_POST['instructor_id'])==false)
 			{
 				$inst_id_empty_err = 'instructor id must be a number';
-			}
-			elseif (is_numeric($_POST['student_id'])==false)
-			{
-				$stud_id_empty_err = 'student id must be a number';
-			}
-			//doesn't work
+				echo 'Instructor id must be a valid number';
+			}	
 			elseif (DateTime::createFromFormat('mm/dd/yyyy', $_POST['test_date']) !== false)
 			{
 				$date_empty_err = 'Please enter a valid date';
+				echo 'Please enter a valid date';
 			}
-			elseif (TimeSpan.TryParse($_POST['test_start_time'])===false)
+			elseif(is_numeric($_POST['test_length'])==false)
 			{
-				$start_empty_err = 'Please enter a valid time';
+				$length_empty_err = 'Please enter a valid test length';
+				echo 'Please enter a valid test length';
+				
+			}
+			elseif((int)$_POST['test_length'] > 240)
+			{
+				$length_empty_err = 'Test cannot be longer than 4 hours';
+				echo 'Test cannot be longer than 4 hours. Please contact your Proctoring Center if you require a longer test length';
 			}
 			else
 			{
-				$good = 'Good';	
+					
+				$good = 'Not Started';	
 				try
 				{
+					$length = (int)$_POST['test_length'] * 60;
+					var_dump($length);
+					
 					if(empty($_POST['test_file_blob']))
 					{
 						$stmt = $pdo->prepare($sql);
 						$data = [ 'inst_id'	=> $_POST['instructor_id'],
 							'test_date'	=> $_POST['test_date'],
-							'test_length'	=> $_POST['test_length'],
+							'test_length'	=> $length,
 							'test_version'	=> $_POST['test_version'],
 							'test_course'	=> $_POST['test_course'],
 							'test_start_time'	=> $_POST['test_start_time'],
 				       			'test_status'	=> $good];
 					
 						$stmt->execute($data);
+
+
+						//gets the test ID from the test we just created
+						$findStmt = $pdo->prepare($findTestID);
+						$data1 = [ 'instructor_id'	=> $_POST['instructor_id'],
+							'test_date'		=> $_POST['test_date'],
+							'test_start_time'	=> $_POST['test_start_time'] ];
+
+						$findStmt->execute($data1);
+						$new = $findStmt->fetch();
+						var_dump($new['test_id']);
+					//	var_dump($findStmt->fetch());
+						//now insert into reservations
+						//
+						$tmStmp = $_POST['test_date'] . ' ' . $_POST['test_start_time'] . ':00';
+
+						$reserveStmt = $pdo->prepare($reservation);
+						$data2 = ['stud_id'	=> $_POST['student_id'],
+							'test_id'	=> $new['test_id'],
+							'seat_id'	=> 4,
+							'test_time_stamp' => $tmStmp ];
+						$reserveStmt->execute($data2);
+
+
 						
 					}
 					else
@@ -176,8 +272,8 @@ function main()
 						$stmt->execute($data);
 			 
 					}
-					sendBack();
-			 		
+					//sendBack();
+					header("Location: /test_created.php");
 				}
 				catch (\PDOException $e)
 				{
@@ -204,5 +300,7 @@ function main()
 }
 
 main();
+
+returnButton();
 ?>
 
